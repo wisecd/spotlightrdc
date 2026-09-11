@@ -119,12 +119,12 @@ Puis accédez à `http://localhost:8080`.
 
 Le studio met en avant 8 projets réels conçus et déployés :
 
-1. **[Casalinka](https://www.casalinka.app)** (`www.casalinka.app`) — PropTech, conciergerie et recherche immobilière interactive.
+1. **[Casalinka](https://www.casalinka.app)** (`www.casalinka.app`) — Site d'immobilier en Angola (achat, vente, location et conciergerie).
 2. **[Gráfica TREKO](https://www.treko.ao)** (`www.treko.ao`) — Atelier d'impression offset & numérique à Luanda (Angola).
-3. **[Wise CD](https://www.wise.cd)** (`www.wise.cd`) — Fintech, solutions logicielles et conseil stratégique en RDC.
-4. **[Amba Guiluinda](https://www.ambaguiluinda.it.ao)** (`www.ambaguiluinda.it.ao`) — Portail corporate d'ingénierie et grands chantiers BTP.
-5. **[Pambala](https://www.pambala.ao)** (`www.pambala.ao`) — Plateforme de commerce, services et marque en Angola.
-6. **[Aura Digital](https://www.auradigital.ao)** (`www.auradigital.ao`) — Vitrine technologique, micro-interactions et motion design à Luanda.
-7. **[Spotlight RDC](https://www.spotlightrdc.cd)** (`www.spotlightrdc.cd`) — Studio créatif de prestige, direction artistique et médias.
-8. **[Zero Angola](https://www.zero.ao)** (`www.zero.ao`) — Concept digital brutaliste et lifestyle contemporain.
+3. **[WISE.CD](https://www.wise.cd)** (`www.wise.cd`) — Site d'information et du magazine WISE.CD en République Démocratique du Congo.
+4. **[Ambassade de Guinée en Angola](https://www.ambaguiluanda.it.ao)** (`www.ambaguiluanda.it.ao`) — Site de prise de rendez-vous de l'Ambassade de la République de Guinée en République d'Angola.
+5. **[Pambala](https://www.pambala.ao)** (`www.pambala.ao`) — Produits digitaux (clés de jeux, eSIM internationale, crédit, gift cards Apple, Amazon, Netflix, Play Store).
+6. **[Aura Digital](https://www.auradigital.ao)** (`www.auradigital.ao`) — Vente de clés de jeux vidéo et softwares à bon prix tout digital.
+7. **[Spotlight RDC](https://www.spotlightrdc.cd)** (`www.spotlightrdc.cd`) — Studio de création Spotlight & médias en RDC.
+8. **[Zero Angola](https://www.zero.ao)** (`www.zero.ao`) — Site de la marque de vêtements streetwear en Angola.
 
