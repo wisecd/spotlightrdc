@@ -230,6 +230,159 @@ tailwind.config = {
     .fm-brand-text, .fm-link span, .fm-link .fm-badge, .fm-mega-btn span { display: none; }
     .fm-link, .fm-mega-btn { justify-content: center; padding: 12px 0; }
   }
+
+  /* ============================================================
+     RESPONSIVE TYPOGRAPHY & MOLETTE HAPTIQUE (PETITS CARACTÈRES)
+     Ajuste avec précision les textes de lecture sans casser le design
+  ============================================================ */
+  html {
+    overflow-x: hidden;
+  }
+
+  html[data-reader-zoom="110"] [class*="text-[10px]"],
+  html[data-reader-zoom="110"] [class*="text-[11px]"] { font-size: 12.2px !important; line-height: 1.45 !important; }
+  html[data-reader-zoom="110"] [class*="text-[12px]"],
+  html[data-reader-zoom="110"] [class*="text-[12.5px]"] { font-size: 13.8px !important; line-height: 1.5 !important; }
+  html[data-reader-zoom="110"] [class*="text-[13px]"] { font-size: 14.8px !important; line-height: 1.55 !important; }
+  html[data-reader-zoom="110"] [class*="text-[14px]"],
+  html[data-reader-zoom="110"] .text-xs { font-size: 14.2px !important; line-height: 1.55 !important; }
+  html[data-reader-zoom="110"] .text-sm { font-size: 15.6px !important; line-height: 1.6 !important; }
+  html[data-reader-zoom="110"] p:not([class*="text-2xl"]):not([class*="text-3xl"]):not([class*="text-4xl"]):not([class*="text-5xl"]):not([class*="text-[clamp"]) { font-size: 15.5px !important; line-height: 1.65 !important; }
+
+  html[data-reader-zoom="120"] [class*="text-[10px]"],
+  html[data-reader-zoom="120"] [class*="text-[11px]"] { font-size: 13.5px !important; line-height: 1.45 !important; }
+  html[data-reader-zoom="120"] [class*="text-[12px]"],
+  html[data-reader-zoom="120"] [class*="text-[12.5px]"] { font-size: 15px !important; line-height: 1.52 !important; }
+  html[data-reader-zoom="120"] [class*="text-[13px]"] { font-size: 16px !important; line-height: 1.55 !important; }
+  html[data-reader-zoom="120"] [class*="text-[14px]"],
+  html[data-reader-zoom="120"] .text-xs { font-size: 15.5px !important; line-height: 1.55 !important; }
+  html[data-reader-zoom="120"] .text-sm { font-size: 17px !important; line-height: 1.6 !important; }
+  html[data-reader-zoom="120"] p:not([class*="text-2xl"]):not([class*="text-3xl"]):not([class*="text-4xl"]):not([class*="text-5xl"]):not([class*="text-[clamp"]) { font-size: 17px !important; line-height: 1.68 !important; }
+
+  html[data-reader-zoom="130"] [class*="text-[10px]"],
+  html[data-reader-zoom="130"] [class*="text-[11px]"] { font-size: 14.5px !important; line-height: 1.5 !important; }
+  html[data-reader-zoom="130"] [class*="text-[12px]"],
+  html[data-reader-zoom="130"] [class*="text-[12.5px]"] { font-size: 16.2px !important; line-height: 1.55 !important; }
+  html[data-reader-zoom="130"] [class*="text-[13px]"] { font-size: 17.5px !important; line-height: 1.6 !important; }
+  html[data-reader-zoom="130"] [class*="text-[14px]"],
+  html[data-reader-zoom="130"] .text-xs { font-size: 17px !important; line-height: 1.6 !important; }
+  html[data-reader-zoom="130"] .text-sm { font-size: 18.5px !important; line-height: 1.65 !important; }
+  html[data-reader-zoom="130"] p:not([class*="text-2xl"]):not([class*="text-3xl"]):not([class*="text-4xl"]):not([class*="text-5xl"]):not([class*="text-[clamp"]) { font-size: 18.5px !important; line-height: 1.72 !important; }
+
+  /* Bouton Flottant Molette */
+  .dial-floating-trigger {
+    position: fixed;
+    bottom: 24px;
+    right: 18px;
+    z-index: 45;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(20, 23, 31, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 208, 38, 0.45);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), 0 0 16px rgba(255, 208, 38, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dial-floating-trigger:hover {
+    border-color: var(--gold);
+    transform: scale(1.08);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 24px rgba(255, 208, 38, 0.4);
+  }
+  .dial-trigger-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .dial-trigger-icon {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: -0.05em;
+  }
+  .dial-trigger-indicator {
+    font-size: 8px;
+    font-weight: 700;
+    color: rgba(244, 242, 237, 0.75);
+    margin-top: 2px;
+  }
+
+  /* Dial Ticks & Stepper */
+  .dial-tick {
+    position: absolute;
+    width: 2.5px;
+    height: 8px;
+    background: rgba(255, 208, 38, 0.4);
+    border-radius: 2px;
+  }
+  .dial-tick.tick-0 { top: 8px; left: 50%; transform: translateX(-50%); }
+  .dial-tick.tick-1 { top: 50%; right: 8px; transform: translateY(-50%); }
+  .dial-tick.tick-2 { bottom: 8px; left: 50%; transform: translateX(-50%); }
+  .dial-tick.tick-3 { top: 50%; left: 8px; transform: translateY(-50%); }
+
+  .dial-step-btn {
+    padding: 9px 4px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    text-align: center;
+    transition: all 0.25s ease;
+    color: var(--bone);
+  }
+  .dial-step-btn:hover {
+    border-color: rgba(255, 208, 38, 0.5);
+    background: rgba(255, 208, 38, 0.08);
+  }
+  .dial-step-btn.active {
+    border-color: var(--gold);
+    background: rgba(255, 208, 38, 0.18);
+    box-shadow: 0 0 15px rgba(255, 208, 38, 0.25);
+  }
+  .dial-step-btn.active span:first-child {
+    color: var(--gold);
+  }
+
+  /* Social Badges */
+  .social-badge-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(20, 23, 31, 0.85);
+    border: 1px solid rgba(244, 242, 237, 0.1);
+    color: var(--bone);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .social-badge-btn:hover {
+    background: rgba(255, 208, 38, 0.1);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -6px rgba(255, 208, 38, 0.25);
+  }
+  .social-badge-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(255, 208, 38, 0.12);
+    display: grid;
+    place-items: center;
+    color: var(--gold);
+    transition: all 0.3s ease;
+  }
+  .social-badge-btn:hover .social-badge-icon {
+    background: var(--gold);
+    color: #0A0B0E;
+  }
 </style>
 </head>
 
@@ -306,6 +459,73 @@ tailwind.config = {
         </div>
       </div>
 
+      <!-- Confort de Lecture & Molette Typographique -->
+      <button type="button" class="w-full flex items-center justify-between p-3.5 rounded-2xl border border-gold/30 bg-gradient-to-r from-gold/[0.12] to-gold/[0.03] text-bone hover:border-gold hover:bg-gold/[0.18] transition group text-left" data-dial-open aria-label="Ouvrir la molette de confort typographique">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-xl bg-gold text-onyx font-syne font-extrabold text-[13px] flex items-center justify-center shadow-md shadow-gold/20 group-hover:scale-105 transition-transform">
+            Aa
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-syne text-[12.5px] font-bold text-bone group-hover:text-gold transition">Molette de Confort</span>
+              <span class="rounded bg-gold/20 px-1.5 py-0.5 text-[8.5px] font-bold uppercase tracking-wider text-gold">Son doux</span>
+            </div>
+            <span class="text-[10.5px] text-bone/50 block">Ajuster la taille des petits caractères</span>
+          </div>
+        </div>
+        <span class="text-[11px] font-bold text-gold px-2.5 py-1 rounded-full bg-black/50 border border-gold/30" id="megaDrawerDialIndicator">100%</span>
+      </button>
+
+      <!-- Réseaux Sociaux & Médias Officiels Spotlight -->
+      <div class="border-t border-white/10 pt-4">
+        <span class="mb-3 block text-[10px] uppercase tracking-[0.28em] text-bone/40">Suivez Studio Spotlight</span>
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Facebook -->
+          <a href="https://facebook.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 hover:border-gold/50 hover:bg-gold/[0.08] transition group">
+            <div class="h-7 w-7 rounded-lg bg-gold/15 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-onyx transition flex-shrink-0">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <div class="truncate leading-tight">
+              <span class="text-[12px] font-bold text-bone group-hover:text-gold transition block truncate">Facebook</span>
+              <span class="text-[9.5px] text-bone/40 block truncate">@spotlightrdc</span>
+            </div>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://tiktok.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 hover:border-gold/50 hover:bg-gold/[0.08] transition group">
+            <div class="h-7 w-7 rounded-lg bg-gold/15 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-onyx transition flex-shrink-0">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.94-4.49V8.8a8.28 8.28 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1-.21z"/></svg>
+            </div>
+            <div class="truncate leading-tight">
+              <span class="text-[12px] font-bold text-bone group-hover:text-gold transition block truncate">TikTok</span>
+              <span class="text-[9.5px] text-bone/40 block truncate">Vidéos &amp; Reels</span>
+            </div>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://youtube.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 hover:border-gold/50 hover:bg-gold/[0.08] transition group">
+            <div class="h-7 w-7 rounded-lg bg-gold/15 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-onyx transition flex-shrink-0">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <div class="truncate leading-tight">
+              <span class="text-[12px] font-bold text-bone group-hover:text-gold transition block truncate">YouTube</span>
+              <span class="text-[9.5px] text-bone/40 block truncate">Showreels</span>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-2.5 hover:border-gold/50 hover:bg-gold/[0.08] transition group">
+            <div class="h-7 w-7 rounded-lg bg-gold/15 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-onyx transition flex-shrink-0">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="truncate leading-tight">
+              <span class="text-[12px] font-bold text-bone group-hover:text-gold transition block truncate">Instagram</span>
+              <span class="text-[9.5px] text-bone/40 block truncate">Portfolio</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       <div class="border-t border-white/10 pt-4 space-y-2">
         <div class="flex items-center justify-between text-[12px] text-bone/50">
           <a href="index.html" class="hover:text-gold flex items-center gap-1.5">
@@ -373,7 +593,35 @@ tailwind.config = {
     </a>
   </div>
 
-  <div class="mt-4 p-3 rounded-xl border border-gold/25 bg-gold/[0.05] text-[11px] text-bone/70">
+  <!-- Réseaux Sociaux & Médias Agrandis -->
+  <div class="my-2 border-t border-white/10 pt-2 space-y-1">
+    <span class="block px-2 py-1 text-[9.5px] uppercase tracking-[0.2em] text-bone/40 font-bold">Réseaux Officiels</span>
+    
+    <a href="https://facebook.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="fm-link" data-label="Facebook">
+      <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <span>Facebook</span>
+      <span class="fm-badge">Page</span>
+    </a>
+
+    <a href="https://tiktok.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="fm-link" data-label="TikTok">
+      <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.94-4.49V8.8a8.28 8.28 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1-.21z"/></svg>
+      <span>TikTok</span>
+      <span class="fm-badge">Vidéos</span>
+    </a>
+
+    <a href="https://youtube.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="fm-link" data-label="YouTube">
+      <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <span>YouTube</span>
+      <span class="fm-badge">Chaîne</span>
+    </a>
+
+    <a href="https://instagram.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="fm-link" data-label="Instagram">
+      <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <span>Instagram</span>
+    </a>
+  </div>
+
+  <div class="mt-3 p-3 rounded-xl border border-gold/25 bg-gold/[0.05] text-[11px] text-bone/70">
     <div class="flex items-center gap-1.5 text-gold font-bold uppercase tracking-wider mb-1">
       <span class="pulse-beam h-1.5 w-1.5 rounded-full bg-gold"></span>
       <span>Express Luanda</span>
@@ -1100,29 +1348,210 @@ tailwind.config = {
 <!-- ==================================================================
      FOOTER
 =================================================================== -->
-<footer class="border-t border-white/10 px-5 py-12 md:px-10">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-[12px] text-bone/40">
-    <div class="flex items-center gap-2">
-      <span class="pulse-beam h-2 w-2 rounded-full bg-gold"></span>
-      <span class="font-syne font-bold uppercase text-bone">Spotlight Imprimerie · Gráfica TREKO</span>
-      <span>— Luanda, Angola</span>
+<footer class="border-t border-white/10 px-5 py-14 md:px-10">
+  <div class="max-w-6xl mx-auto space-y-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between">
+      <!-- Info Atelier -->
+      <div class="md:col-span-6">
+        <div class="flex items-center gap-2.5">
+          <span class="pulse-beam h-2 w-2 rounded-full bg-gold"></span>
+          <span class="font-syne text-[14px] font-extrabold uppercase tracking-[0.22em] text-bone">Spotlight Imprimerie · Gráfica TREKO</span>
+        </div>
+        <p class="mt-3 text-[13px] text-bone/50 max-w-[46ch] leading-relaxed">
+          Atelier d'impression haute vitesse basé à Luanda. 9 pôles complets pour vos événements, bureaux, chantiers et identités visuelles avec livraison express en Angola et en RDC.
+        </p>
+      </div>
+
+      <!-- Réseaux Sociaux Agrandis -->
+      <div class="md:col-span-6 md:justify-self-end w-full md:w-auto">
+        <span class="mb-3 block text-[10px] uppercase tracking-[0.28em] text-gold font-bold">Réseaux Sociaux Officiels</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          <!-- Facebook -->
+          <a href="https://facebook.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="social-badge-btn group" title="Page Facebook Spotlight">
+            <div class="social-badge-icon">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <div class="text-left leading-tight truncate">
+              <span class="block text-[12px] font-bold text-bone group-hover:text-gold transition truncate">Facebook</span>
+              <span class="text-[9px] text-bone/40 block truncate">@spotlight</span>
+            </div>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://tiktok.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="social-badge-btn group" title="TikTok Spotlight">
+            <div class="social-badge-icon">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.49 6.27 6.27 0 0 0 1.94-4.49V8.8a8.28 8.28 0 0 0 4.83 1.54V6.9a4.85 4.85 0 0 1-1-.21z"/></svg>
+            </div>
+            <div class="text-left leading-tight truncate">
+              <span class="block text-[12px] font-bold text-bone group-hover:text-gold transition truncate">TikTok</span>
+              <span class="text-[9px] text-bone/40 block truncate">Vidéos</span>
+            </div>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://youtube.com/@spotlightrdc" target="_blank" rel="noopener noreferrer" class="social-badge-btn group" title="YouTube Spotlight">
+            <div class="social-badge-icon">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <div class="text-left leading-tight truncate">
+              <span class="block text-[12px] font-bold text-bone group-hover:text-gold transition truncate">YouTube</span>
+              <span class="text-[9px] text-bone/40 block truncate">Showreels</span>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com/spotlightrdc" target="_blank" rel="noopener noreferrer" class="social-badge-btn group" title="Instagram Spotlight">
+            <div class="social-badge-icon">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="text-left leading-tight truncate">
+              <span class="block text-[12px] font-bold text-bone group-hover:text-gold transition truncate">Instagram</span>
+              <span class="text-[9px] text-bone/40 block truncate">Portfolio</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-      <a href="index.html" class="hover:text-gold transition">Studio Spotlight</a>
-      <span>·</span>
-      <a href="https://www.treko.ao" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">treko.ao ↗</a>
-      <span>·</span>
-      <a href="https://www.spotlightrdc.cd" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">spotlightrdc.cd ↗</a>
-      <span>·</span>
-      <a href="#catalogue" class="hover:text-gold transition">Catalogue 9 Pôles</a>
-      <span>·</span>
-      <a href="#contact-print" class="hover:text-gold transition">Commander</a>
+    <!-- Navigation secondaire & Copyright -->
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-bone/40">
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="index.html" class="hover:text-gold transition">Studio Spotlight</a>
+        <span>·</span>
+        <a href="https://www.treko.ao" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">treko.ao ↗</a>
+        <span>·</span>
+        <a href="https://www.spotlightrdc.cd" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition">spotlightrdc.cd ↗</a>
+        <span>·</span>
+        <a href="#catalogue" class="hover:text-gold transition">Catalogue 9 Pôles</a>
+        <span>·</span>
+        <a href="#contact-print" class="hover:text-gold transition">Commander Express</a>
+      </div>
+      <span>© 2026 Spotlight Imprimerie · Tous droits réservés</span>
     </div>
   </div>
 </footer>
 
 </div><!-- /.app-main -->
+
+
+<!-- ==================================================================
+     BOUTON FLOTTANT MOLETTE DE LECTURE (MOBILE & TABLETTE)
+=================================================================== -->
+<button type="button" id="dialTriggerBtn" class="dial-floating-trigger" aria-label="Ajuster le confort de lecture et la taille des petits caractères" title="Molette tactile & sonore">
+  <div class="dial-trigger-inner">
+    <span class="dial-trigger-icon">Aa</span>
+    <span class="dial-trigger-indicator" id="dialTriggerIndicator">100%</span>
+  </div>
+</button>
+
+
+<!-- ==================================================================
+     MOLETTE DE LECTURE HAPTIQUE & SONORE (MODALE DIAL STUDIO)
+=================================================================== -->
+<div id="typoDialModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="dialModalTitle">
+  <div class="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity" data-dial-close></div>
+
+  <div class="relative w-full max-w-md rounded-3xl border border-gold/30 bg-gradient-to-b from-[#14171F] to-[#0A0B0E] p-6 shadow-2xl shadow-black/95">
+    
+    <!-- En-tête -->
+    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gold text-onyx font-syne font-black text-sm shadow-md shadow-gold/25">
+          Aa
+        </div>
+        <div>
+          <h3 id="dialModalTitle" class="font-syne text-[14px] font-bold uppercase tracking-wider text-bone">Confort Typographique</h3>
+          <p class="text-[11px] text-bone/50">Molette sonore · Petits caractères sans défaire le design</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Son doux on/off -->
+        <button type="button" id="dialSoundToggle" class="h-8 w-8 rounded-full border border-white/15 bg-white/5 text-bone/70 hover:border-gold hover:text-gold grid place-items-center transition" aria-label="Activer / Couper le son doux" title="Son doux du clic">
+          <svg id="dialSoundIconOn" class="h-4 w-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="dialSoundIconOff" class="h-4 w-4 text-bone/40 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+
+        <!-- Fermer -->
+        <button type="button" data-dial-close class="h-8 w-8 rounded-full border border-white/15 bg-white/5 text-bone/60 hover:border-gold hover:text-onyx hover:bg-gold grid place-items-center transition" aria-label="Fermer la molette">
+          <svg class="h-4 w-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2l8 8M10 2l-8 8"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cœur Interactif : Cadran / Molette Horlogère -->
+    <div class="my-6 flex flex-col items-center">
+      <div class="relative flex items-center justify-center">
+        <!-- Cadran rotatif -->
+        <div class="dial-wheel-outer relative h-40 w-40 rounded-full border-2 border-gold/30 bg-[#0B0D12] shadow-inner shadow-black/90 flex items-center justify-center select-none cursor-pointer group" title="Cliquez pour tourner la molette">
+          <!-- Graduations / Repères -->
+          <span class="dial-tick tick-0" title="100%"></span>
+          <span class="dial-tick tick-1" title="110%"></span>
+          <span class="dial-tick tick-2" title="120%"></span>
+          <span class="dial-tick tick-3" title="130%"></span>
+
+          <!-- Bouton molette rotatif -->
+          <div id="dialRotaryKnob" class="relative h-24 w-24 rounded-full border-2 border-gold/60 bg-gradient-to-tr from-[#12151D] via-[#1A1F2B] to-[#252B3A] shadow-xl shadow-black/90 flex items-center justify-center transition-transform duration-300 ease-out">
+            <div class="h-9 w-9 rounded-full border border-gold/40 bg-onyx flex items-center justify-center">
+              <span class="h-2 w-2 rounded-full bg-gold shadow-[0_0_8px_#FFD026]"></span>
+            </div>
+            <!-- Aiguille dorée -->
+            <div class="absolute top-1.5 w-1.5 h-5 bg-gold rounded-full shadow-[0_0_8px_#FFD026]"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affichage du niveau actuel -->
+      <div class="mt-4 flex items-center gap-2">
+        <span class="text-[10px] uppercase tracking-[0.2em] text-bone/40">Calibrage :</span>
+        <span id="dialCurrentLevelLabel" class="font-syne text-base font-extrabold text-gold tracking-wider">100% · Normal</span>
+      </div>
+      <p class="mt-1 text-[11px] text-bone/50 text-center">Touchez la molette ou sélectionnez un palier ci-dessous</p>
+    </div>
+
+    <!-- Paliers directs (Crans de précision) -->
+    <div class="grid grid-cols-4 gap-2">
+      <button type="button" class="dial-step-btn active" data-zoom="100">
+        <span class="text-[12px] font-bold block">100%</span>
+        <span class="text-[9px] text-bone/40 block">Défaut</span>
+      </button>
+      <button type="button" class="dial-step-btn" data-zoom="110">
+        <span class="text-[12px] font-bold block">110%</span>
+        <span class="text-[9px] text-bone/40 block">Confort</span>
+      </button>
+      <button type="button" class="dial-step-btn" data-zoom="120">
+        <span class="text-[12px] font-bold block">120%</span>
+        <span class="text-[9px] text-bone/40 block">Optimal</span>
+      </button>
+      <button type="button" class="dial-step-btn" data-zoom="130">
+        <span class="text-[12px] font-bold block">130%</span>
+        <span class="text-[9px] text-bone/40 block">Maxi</span>
+      </button>
+    </div>
+
+    <!-- Échantillon d'aperçu dynamique -->
+    <div class="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-3.5">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[9.5px] uppercase tracking-[0.2em] text-gold font-bold">Aperçu en Direct</span>
+        <span class="text-[9.5px] text-bone/40">Design 100% Préservé</span>
+      </div>
+      <p class="text-[12px] text-bone/75 leading-relaxed">
+        « Spotlight Imprimerie garantit des fiches techniques et détails de commandes parfaitement lisibles sans distorsion graphique. »
+      </p>
+    </div>
+
+    <!-- Pied de modale -->
+    <div class="mt-5 flex items-center justify-between pt-3 border-t border-white/10">
+      <button type="button" id="dialResetBtn" class="text-[11.5px] text-bone/50 hover:text-gold transition">
+        Réinitialiser (100%)
+      </button>
+      <button type="button" data-dial-close class="rounded-full bg-gold px-5 py-2 text-[12px] font-bold text-onyx shadow-md hover:bg-gold/90 transition">
+        Appliquer &amp; Fermer
+      </button>
+    </div>
+
+  </div>
+</div>
 
 
 <!-- SCRIPT INTERACTIF POUR LA RECHERCHE, LES FILTRES ET LES COMMANDES WHATSAPP -->
@@ -1252,6 +1681,211 @@ tailwind.config = {
       window.open(url, '_blank', 'noopener');
     });
   }
+
+  /* ============================================================
+     MOLETTE DE LECTURE HAPTIQUE & SYNTHÉTISEUR SONORE LUXE
+     Agrandit intelligemment les petits caractères SANS défaire le design
+  ============================================================ */
+  const TypoReaderEngine = (function() {
+    let currentZoom = 100;
+    let isMuted = false;
+    let audioCtx = null;
+
+    // Synthétiseur Web Audio natif pour le son doux (clic feutré 800Hz amorti, zéro fichier externe)
+    function playSoftClick(pitch = 760) {
+      if (isMuted) return;
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        if (!audioCtx) audioCtx = new AudioContextClass();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(pitch, now);
+        osc.frequency.exponentialRampToValueAtTime(pitch * 0.42, now + 0.024);
+
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.024);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.028);
+      } catch (err) {}
+
+      // Vibration haptique sur smartphone
+      if (navigator.vibrate) {
+        try { navigator.vibrate(12); } catch(e) {}
+      }
+    }
+
+    const levels = [100, 110, 120, 130];
+    const angles = { 100: 0, 110: 90, 120: 180, 130: 270 };
+    const labels = {
+      100: '100% · Normal',
+      110: '110% · Confort',
+      120: '120% · Optimal',
+      130: '130% · Maxi'
+    };
+
+    function setZoom(level, playSound = true) {
+      if (!levels.includes(Number(level))) level = 100;
+      currentZoom = Number(level);
+
+      // Appliquer au document
+      if (currentZoom === 100) {
+        document.documentElement.removeAttribute('data-reader-zoom');
+      } else {
+        document.documentElement.setAttribute('data-reader-zoom', currentZoom);
+      }
+
+      // Sauvegarde locale persistante
+      try {
+        localStorage.setItem('spotlight_reader_zoom', currentZoom);
+      } catch (e) {}
+
+      // Mise à jour de l'indicateur bouton flottant
+      const trigInd = document.getElementById('dialTriggerIndicator');
+      if (trigInd) trigInd.textContent = currentZoom + '%';
+
+      // Indicateur dans le mega menu
+      const drawerInd = document.getElementById('megaDrawerDialIndicator');
+      if (drawerInd) drawerInd.textContent = currentZoom + '%';
+
+      // Libellé de la modale
+      const labelEl = document.getElementById('dialCurrentLevelLabel');
+      if (labelEl) labelEl.textContent = labels[currentZoom] || (currentZoom + '%');
+
+      // Boutons crans
+      document.querySelectorAll('.dial-step-btn').forEach(btn => {
+        const z = Number(btn.getAttribute('data-zoom'));
+        btn.classList.toggle('active', z === currentZoom);
+      });
+
+      // Rotation de l'aiguille molette
+      const knob = document.getElementById('dialRotaryKnob');
+      if (knob) {
+        const deg = angles[currentZoom] || 0;
+        knob.style.transform = `rotate(${deg}deg)`;
+      }
+
+      if (playSound) {
+        const pitches = { 100: 680, 110: 760, 120: 840, 130: 920 };
+        playSoftClick(pitches[currentZoom] || 760);
+      }
+    }
+
+    function init() {
+      // Charger réglages sauvegardés
+      try {
+        const savedZoom = localStorage.getItem('spotlight_reader_zoom');
+        if (savedZoom && levels.includes(Number(savedZoom))) {
+          setZoom(Number(savedZoom), false);
+        }
+        const savedMute = localStorage.getItem('spotlight_reader_mute');
+        if (savedMute === 'true') {
+          isMuted = true;
+          updateMuteIcon();
+        }
+      } catch (e) {}
+
+      // Triggers d'ouverture et fermeture
+      const openTriggers = document.querySelectorAll('[data-dial-open], #dialTriggerBtn');
+      const closeTriggers = document.querySelectorAll('[data-dial-close]');
+      const modal = document.getElementById('typoDialModal');
+
+      openTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            playSoftClick(620);
+          }
+        });
+      });
+
+      closeTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (modal) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        });
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+
+      // Crans directs
+      document.querySelectorAll('.dial-step-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const z = Number(btn.getAttribute('data-zoom'));
+          setZoom(z, true);
+        });
+      });
+
+      // Molette cliquable / rotative
+      const wheelOuter = document.querySelector('.dial-wheel-outer');
+      if (wheelOuter) {
+        wheelOuter.addEventListener('click', () => {
+          const idx = levels.indexOf(currentZoom);
+          const nextIdx = (idx + 1) % levels.length;
+          setZoom(levels[nextIdx], true);
+        });
+      }
+
+      // Bouton Reset
+      const resetBtn = document.getElementById('dialResetBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          setZoom(100, true);
+        });
+      }
+
+      // Bouton Mute
+      const soundBtn = document.getElementById('dialSoundToggle');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          isMuted = !isMuted;
+          try {
+            localStorage.setItem('spotlight_reader_mute', isMuted);
+          } catch(e) {}
+          updateMuteIcon();
+          if (!isMuted) playSoftClick(800);
+        });
+      }
+
+      function updateMuteIcon() {
+        const iconOn = document.getElementById('dialSoundIconOn');
+        const iconOff = document.getElementById('dialSoundIconOff');
+        if (iconOn && iconOff) {
+          if (isMuted) {
+            iconOn.classList.add('hidden');
+            iconOff.classList.remove('hidden');
+          } else {
+            iconOn.classList.remove('hidden');
+            iconOff.classList.add('hidden');
+          }
+        }
+      }
+    }
+
+    return { init, setZoom };
+  })();
+
+  TypoReaderEngine.init();
+
 })();
 </script>
 
