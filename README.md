@@ -112,3 +112,19 @@ npx serve .
 python3 -m http.server 8080
 ```
 Puis accédez à `http://localhost:8080`.
+
+---
+
+## 🌐 Réalisations & Sites en Production
+
+Le studio met en avant 8 projets réels conçus et déployés :
+
+1. **[Casalinka](https://www.casalinka.app)** (`www.casalinka.app`) — PropTech, conciergerie et recherche immobilière interactive.
+2. **[Gráfica TREKO](https://www.treko.ao)** (`www.treko.ao`) — Atelier d'impression offset & numérique à Luanda (Angola).
+3. **[Wise CD](https://www.wise.cd)** (`www.wise.cd`) — Fintech, solutions logicielles et conseil stratégique en RDC.
+4. **[Amba Guiluinda](https://www.ambaguiluinda.it.ao)** (`www.ambaguiluinda.it.ao`) — Portail corporate d'ingénierie et grands chantiers BTP.
+5. **[Pambala](https://www.pambala.ao)** (`www.pambala.ao`) — Plateforme de commerce, services et marque en Angola.
+6. **[Aura Digital](https://www.auradigital.ao)** (`www.auradigital.ao`) — Vitrine technologique, micro-interactions et motion design à Luanda.
+7. **[Spotlight RDC](https://www.spotlightrdc.cd)** (`www.spotlightrdc.cd`) — Studio créatif de prestige, direction artistique et médias.
+8. **[Zero Angola](https://www.zero.ao)** (`www.zero.ao`) — Concept digital brutaliste et lifestyle contemporain.
+
