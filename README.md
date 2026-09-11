@@ -1,4 +1,4 @@
-# SPOTLIGHT — Studio de Création Signature
+# SPOTLIGHT — Studio de Création Spotlight
 
 Site web immersif et vitrine haut de gamme pour **SPOTLIGHT**, studio de création indépendant spécialisé en **Identité Visuelle, Impression d'Exception, UI/UX Digital et Packaging**.
 
@@ -60,7 +60,7 @@ Modifiez l'objet `window.SPOTLIGHT_CONFIG` en haut du fichier :
 window.SPOTLIGHT_CONFIG = {
   WHATSAPP_NUMBER: '244900000000', // Votre numéro WhatsApp
   STUDIO_EMAIL:    'studio@spotlight.design',
-  STUDIO_LOCATION: 'Luanda, Angola — International',
+  STUDIO_LOCATION: 'International',
   
   // Activer Supabase :
   ENABLE_SUPABASE:   true,
