@@ -1870,28 +1870,47 @@ tailwind.config = {
           </a>
           <button type="button" data-mega-open
              class="magnetic inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/[0.05] px-6 py-3.5 text-[13px] font-medium text-gold hover:bg-gold hover:text-onyx transition-all">
-            <span>Explorer le Mega Menu</span>
+            <span>Explorer les services</span>
             <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </div>
 
+      <!-- Sphère de Particules Aimantées Luminescentes -->
       <div class="reveal md:col-span-4 md:col-start-9 md:justify-self-end md:self-center">
-        <div class="relative grid h-40 w-40 place-items-center md:h-52 md:w-52">
-          <svg class="spin-slow absolute inset-0 h-full w-full text-bone/25" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <div class="magnetic-orb-container relative h-48 w-48 md:h-60 md:w-60 flex items-center justify-center select-none" id="particleOrbContainer">
+          
+          <!-- Anneau orbital extérieur en rotation lente -->
+          <svg class="spin-slow absolute inset-0 h-full w-full text-bone/25 pointer-events-none" viewBox="0 0 200 200" fill="none" aria-hidden="true">
             <defs>
-              <path id="circlePath" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/>
+              <path id="circlePathServices" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
             </defs>
-            <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 8"/>
-            <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="0.5"/>
-            <text fill="currentColor" font-size="9.5" letter-spacing="5.2" style="text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif;">
-              <textPath href="#circlePath" startOffset="0%">· Identité · Print · Digital · Packaging</textPath>
+            <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.6"/>
+            <circle cx="100" cy="100" r="76" stroke="rgba(255,208,38,0.25)" stroke-width="0.75"/>
+            <text fill="currentColor" font-size="8.5" letter-spacing="4.8" opacity="0.75" style="text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif;">
+              <textPath href="#circlePathServices" startOffset="0%">· Spotlight Creative Studio · International · Luanda ·</textPath>
             </text>
           </svg>
-          <div class="grid h-24 w-24 place-items-center rounded-full border border-gold/25 bg-gold/[0.06] md:h-32 md:w-32">
-            <span class="font-syne text-2xl font-extrabold text-gold md:text-3xl">+7</span>
-            <span class="mt-0.5 text-[9px] uppercase tracking-[0.22em] text-bone/45">ans d'artisanat</span>
+
+          <!-- Halo lumineux diffus en arrière-plan -->
+          <div class="absolute inset-4 rounded-full bg-gold/[0.08] blur-xl pointer-events-none"></div>
+
+          <!-- Sphère Canvas des particules aimantées -->
+          <div class="relative h-36 w-36 md:h-44 md:w-44 rounded-full border border-gold/35 bg-gradient-to-b from-[#141720]/85 via-[#0F1218]/90 to-[#0A0B0E] p-1 shadow-[0_0_35px_rgba(255,208,38,0.14)] backdrop-blur-md overflow-hidden cursor-crosshair group" title="Interagissez avec les particules aimantées">
+            <canvas id="magneticParticlesCanvas" class="h-full w-full block rounded-full"></canvas>
+            
+            <!-- Cœur central discret et élégant -->
+            <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div class="h-2 w-2 rounded-full bg-gold shadow-[0_0_12px_#FFD026] animate-pulse"></div>
+            </div>
           </div>
+
+          <!-- Légende discrète sous l'orbe -->
+          <span class="pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8.5px] uppercase tracking-[0.26em] text-gold/70 font-semibold flex items-center gap-1.5">
+            <span class="h-1 w-1 rounded-full bg-gold animate-ping"></span>
+            Particules Aimantées
+          </span>
+
         </div>
       </div>
 
@@ -4207,6 +4226,230 @@ tailwind.config = {
   })();
 
   TypoReaderEngine.init();
+
+
+  /* ============================================================
+     SYSTÈME DE PARTICULES AIMANTÉES CLIGNOTANTES (CANVAS)
+     Scintillement subtil, gravitation magnétique et constellations
+  ============================================================ */
+  (function initMagneticParticles() {
+    const canvas = document.getElementById('magneticParticlesCanvas');
+    const container = document.getElementById('particleOrbContainer');
+    if (!canvas || !container) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles = [];
+    let isMouseOver = false;
+    let mouse = { x: 0, y: 0 };
+    let animId = null;
+    let isVisible = true;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    }
+
+    // Palette luxueuse Spotlight
+    const colors = [
+      { r: 255, g: 208, b: 38 },   // Or signature #FFD026
+      { r: 255, g: 228, b: 120 },  // Or étincelant
+      { r: 244, g: 242, b: 237 },  // Ivoire Bone #F4F2ED
+      { r: 255, g: 185, b: 50 },   // Ambre chaud
+    ];
+
+    class Particle {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(initial = false) {
+        const angle = Math.random() * Math.PI * 2;
+        const radius = initial ? Math.random() * (width * 0.44) : (width * 0.44);
+        this.x = width / 2 + Math.cos(angle) * radius;
+        this.y = height / 2 + Math.sin(angle) * radius;
+        
+        // Vitesse orbitale douce
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.radius = 0.8 + Math.random() * 1.7;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Clignotement / Scintillement organique
+        this.baseAlpha = 0.3 + Math.random() * 0.55;
+        this.twinkleSpeed = 0.02 + Math.random() * 0.04;
+        this.twinklePhase = Math.random() * Math.PI * 2;
+        this.alpha = this.baseAlpha;
+
+        this.mass = 0.75 + Math.random() * 0.6;
+        this.friction = 0.94;
+      }
+
+      update(time) {
+        const cx = width / 2;
+        const cy = height / 2;
+        const maxR = width * 0.47;
+
+        // Scintillement doux
+        const twinkle = Math.sin(time * this.twinkleSpeed + this.twinklePhase);
+        this.alpha = Math.max(0.12, Math.min(1, this.baseAlpha * (0.45 + 0.55 * twinkle)));
+
+        // Interaction Aimantée
+        if (isMouseOver) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.hypot(dx, dy);
+          const magnetRadius = width * 0.75;
+
+          if (dist < magnetRadius && dist > 1) {
+            const force = (1 - dist / magnetRadius) * 0.16 * this.mass;
+            this.vx += (dx / dist) * force;
+            this.vy += (dy / dist) * force;
+            // Tourbillon magnétique orbital subtil
+            this.vx += (-dy / dist) * force * 0.35;
+            this.vy += (dx / dist) * force * 0.35;
+          }
+        }
+
+        // Confinement doux dans l'orbe circulaire
+        const fromCenterX = this.x - cx;
+        const fromCenterY = this.y - cy;
+        const distFromCenter = Math.hypot(fromCenterX, fromCenterY);
+
+        if (distFromCenter > maxR) {
+          const normalX = fromCenterX / distFromCenter;
+          const normalY = fromCenterY / distFromCenter;
+          this.vx -= normalX * 0.22;
+          this.vy -= normalY * 0.22;
+        } else {
+          const pull = 0.0025;
+          this.vx -= (fromCenterX / maxR) * pull;
+          this.vy -= (fromCenterY / maxR) * pull;
+        }
+
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.x += this.vx;
+        this.y += this.vy;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha})`;
+        
+        if (this.alpha > 0.65) {
+          ctx.shadowColor = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0.7)`;
+          ctx.shadowBlur = this.radius * 3;
+        }
+        
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = width < 160 ? 46 : 64;
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function updateCoords(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = clientX - rect.left;
+      mouse.y = clientY - rect.top;
+    }
+
+    container.addEventListener('pointerenter', (e) => {
+      isMouseOver = true;
+      updateCoords(e.clientX, e.clientY);
+    });
+
+    container.addEventListener('pointermove', (e) => {
+      isMouseOver = true;
+      updateCoords(e.clientX, e.clientY);
+    });
+
+    container.addEventListener('pointerleave', () => {
+      isMouseOver = false;
+    });
+
+    // Impulsion magnétique au clic / touch
+    container.addEventListener('pointerdown', (e) => {
+      updateCoords(e.clientX, e.clientY);
+      particles.forEach(p => {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.hypot(dx, dy) || 1;
+        const pulse = Math.min(3.5, 28 / dist);
+        p.vx += (dx / dist) * pulse;
+        p.vy += (dy / dist) * pulse;
+      });
+    });
+
+    let time = 0;
+    function loop() {
+      if (!isVisible) {
+        animId = requestAnimationFrame(loop);
+        return;
+      }
+
+      time += 1;
+      ctx.clearRect(0, 0, width, height);
+
+      // Filaments magnétiques légers (constellations)
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+          const maxConnect = 30;
+
+          if (dist < maxConnect) {
+            const lineAlpha = (1 - dist / maxConnect) * 0.2 * particles[i].alpha * particles[j].alpha;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 208, 38, ${lineAlpha})`;
+            ctx.lineWidth = 0.55;
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.update(time);
+        p.draw();
+      });
+
+      animId = requestAnimationFrame(loop);
+    }
+
+    if (window.IntersectionObserver) {
+      const observer = new IntersectionObserver((entries) => {
+        isVisible = entries[0].isIntersecting;
+      }, { threshold: 0.1 });
+      observer.observe(container);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initParticles();
+    }, { passive: true });
+
+    resize();
+    initParticles();
+    loop();
+  })();
 
 })();
 </script>
