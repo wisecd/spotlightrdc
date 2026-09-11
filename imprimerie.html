@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imprimerie d'Élite à Luanda — Délais Record & Finitions d'Exception | SPOTLIGHT</title>
+
+<script>
+  window.SPOTLIGHT_CONFIG = {
+    WHATSAPP_NUMBER: '244900000000',
+    STUDIO_EMAIL:    'studio@spotlight.design',
+    STUDIO_LOCATION: 'Luanda, Angola — International',
+    ENABLE_SUPABASE: false,
+    SUPABASE_URL:    '',
+    SUPABASE_ANON_KEY: ''
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        onyx:     '#0A0B0E',
+        graphite: '#14171F',
+        coal:     '#0F1116',
+        bone:     '#F4F2ED',
+        gold:     '#FFD026',
+      },
+      fontFamily: {
+        syne:  ['Syne', 'system-ui', 'sans-serif'],
+        jak:   ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+      },
+    }
+  }
+}
+</script>
+
+<style>
+  :root {
+    --gold: #FFD026;
+    --menu-w: 248px;
+    --rail: 300px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0A0B0E;
+    color: #F4F2ED;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: #0A0B0E; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .grain::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 95;
+    opacity: .035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Floating Left Menu */
+  .float-menu {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--menu-w);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 20px 14px 16px;
+    border-radius: 26px;
+    background: linear-gradient(180deg, rgba(20,23,31,.92), rgba(15,17,22,.88));
+    backdrop-filter: blur(26px) saturate(150%);
+    -webkit-backdrop-filter: blur(26px) saturate(150%);
+    border: 1px solid rgba(244,242,237,.1);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.95);
+    z-index: 40;
+    scrollbar-width: none;
+    transition: transform .7s cubic-bezier(.16,1,.3,1), opacity .5s ease;
+  }
+  .float-menu::-webkit-scrollbar { display: none; }
+
+  .fm-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 14px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(244,242,237,.08);
+  }
+  .fm-brand-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 34px; height: 34px;
+    flex-shrink: 0;
+  }
+  .fm-brand-mark::before,
+  .fm-brand-mark::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,208,38,.3);
+  }
+  .fm-brand-mark::after { inset: 5px; border-color: rgba(255,208,38,.12); }
+  .fm-brand-mark span {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px rgba(255,208,38,.8);
+    animation: pulseBeam 2.4s ease-in-out infinite;
+  }
+
+  .fm-mega-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255,208,38,.12), rgba(255,208,38,.03));
+    border: 1px solid rgba(255,208,38,.28);
+    color: var(--gold);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .35s ease;
+  }
+  .fm-mega-btn:hover {
+    background: var(--gold);
+    color: #0A0B0E;
+    transform: translateY(-1px);
+  }
+
+  .fm-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 10px;
+    border-radius: 11px;
+    color: rgba(244,242,237,.5);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .35s ease;
+  }
+  .fm-link:hover {
+    color: rgba(244,242,237,.9);
+    background: rgba(244,242,237,.045);
+  }
+  .fm-link.active {
+    color: var(--gold);
+    background: rgba(255,208,38,.07);
+  }
+
+  /* Left Mega Menu Drawer */
+  #megaMenuModal {
+    position: fixed; inset: 0; z-index: 100; display: flex; opacity: 0; visibility: hidden;
+    transition: opacity .4s cubic-bezier(.16,1,.3,1), visibility .4s;
+  }
+  #megaMenuModal.open { opacity: 1; visibility: visible; }
+  .mega-backdrop { position: absolute; inset: 0; background: rgba(10,11,14,.82); backdrop-filter: blur(18px); }
+  .mega-drawer {
+    position: relative; width: 100%; max-width: 680px; height: 100%;
+    background: linear-gradient(180deg, rgba(20,23,31,.98) 0%, rgba(15,17,22,.97) 100%);
+    border-right: 1px solid rgba(244,242,237,.1);
+    box-shadow: 25px 0 100px -20px rgba(0,0,0,.95);
+    display: flex; flex-direction: column; transform: translateX(-100%);
+    transition: transform .55s cubic-bezier(.16,1,.3,1); z-index: 2; overflow: hidden;
+  }
+  #megaMenuModal.open .mega-drawer { transform: translateX(0); }
+
+  .card-print {
+    position: relative;
+    border-radius: 20px;
+    background: rgba(20,23,31,.7);
+    border: 1px solid rgba(244,242,237,.1);
+    transition: all .4s cubic-bezier(.16,1,.3,1);
+  }
+  .card-print:hover {
+    border-color: rgba(255,208,38,.35);
+    background: rgba(20,23,31,.92);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,.85), 0 0 30px -10px rgba(255,208,38,.15);
+  }
+
+  .pill-filter {
+    transition: all .3s cubic-bezier(.16,1,.3,1);
+  }
+  .pill-filter.active {
+    background: var(--gold);
+    color: #0A0B0E;
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+
+  @keyframes pulseBeam {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(255,208,38,.5); }
+    50%      { opacity: .55; transform: scale(.8); box-shadow: 0 0 0 6px rgba(255,208,38,0); }
+  }
+  .pulse-beam { animation: pulseBeam 2.4s ease-in-out infinite; }
+
+  @media (min-width: 1024px) {
+    .app-main { padding-left: var(--rail); }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1180px) {
+    :root { --menu-w: 84px; --rail: 124px; }
+    .fm-brand-text, .fm-link span, .fm-link .fm-badge, .fm-mega-btn span { display: none; }
+    .fm-link, .fm-mega-btn { justify-content: center; padding: 12px 0; }
+  }
+</style>
+</head>
+
+<body class="grain">
+
+<!-- ==================================================================
+     LEFT MEGA MENU DRAWER
+=================================================================== -->
+<div id="megaMenuModal" role="dialog" aria-modal="true" aria-labelledby="megaMenuTitle" aria-hidden="true">
+  <div class="mega-backdrop" data-mega-close></div>
+
+  <div class="mega-drawer" id="megaDrawer">
+    <div class="flex items-center justify-between border-b border-white/10 px-6 py-5">
+      <div class="flex items-center gap-3">
+        <span class="fm-brand-mark"><span></span></span>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-syne text-[14px] font-extrabold uppercase tracking-[0.22em] text-bone" id="megaMenuTitle">Spotlight</span>
+            <span class="rounded-full border border-gold/30 bg-gold/[0.1] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-gold">Imprimerie Luanda</span>
+          </div>
+          <small class="text-[10px] tracking-wider text-bone/40">Gráfica TREKO · Délais Record</small>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <kbd class="hidden sm:inline-block rounded border border-white/15 bg-white/[0.04] px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-bone/40">Esc</kbd>
+        <button type="button" data-mega-close class="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-bone/60 transition hover:border-gold hover:bg-gold hover:text-onyx" aria-label="Fermer le mega menu">
+          <svg class="h-4 w-4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 2l8 8M10 2l-8 8"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <div class="rounded-xl border border-gold/30 bg-gold/[0.07] p-4">
+        <div class="flex items-center gap-2 text-gold text-[11px] font-bold uppercase tracking-wider">
+          <span class="pulse-beam h-2 w-2 rounded-full bg-gold"></span>
+          <span>Atelier Direct à Luanda — Délais Express</span>
+        </div>
+        <p class="mt-1.5 text-[12px] text-bone/70 leading-relaxed">
+          Toutes nos impressions sont réalisées localement à Luanda avec un parc machine haute technologie pour des livraisons en temps record (Same-Day / 24h-48h).
+        </p>
+      </div>
+
+      <div>
+        <span class="mb-3 block text-[10px] font-bold uppercase tracking-[0.28em] text-bone/40">Accès Rapide aux 9 Pôles</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[12.5px]">
+          <a href="#cat-1" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">01.</span> Impression &amp; Papeterie
+          </a>
+          <a href="#cat-2" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">02.</span> Grand Format &amp; Bâches
+          </a>
+          <a href="#cat-3" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">03.</span> Vinyles &amp; Covering
+          </a>
+          <a href="#cat-4" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">04.</span> Textile &amp; EPI Chantiers
+          </a>
+          <a href="#cat-5" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">05.</span> Goodies &amp; Cadeaux
+          </a>
+          <a href="#cat-6" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">06.</span> Emballages &amp; Sacs TNT
+          </a>
+          <a href="#cat-7" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">07.</span> Événementiel &amp; Lanyards
+          </a>
+          <a href="#cat-8" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition">
+            <span class="text-gold font-bold">08.</span> Tampons Encreurs Express
+          </a>
+          <a href="#cat-9" data-mega-close class="flex items-center gap-2 rounded-lg p-2.5 bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:text-gold transition sm:col-span-2">
+            <span class="text-gold font-bold">09.</span> DTF UV &amp; Tableaux Photo Déco
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-4">
+        <div class="flex items-center justify-between text-[12px] text-bone/50">
+          <a href="index.html" class="hover:text-gold flex items-center gap-1.5">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Retour au Studio Signature
+          </a>
+          <span>Luanda · GMT+1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 bg-onyx/90 px-6 py-4 flex items-center justify-between">
+      <a href="#contact-print" data-mega-close class="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[12px] font-bold text-onyx">
+        <span>Devis Express WhatsApp</span>
+        <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+      </a>
+      <span class="text-[11px] text-bone/40">Livraison Luanda &amp; Provinces</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================================================================
+     FLOATING LEFT MENU (DESKTOP)
+=================================================================== -->
+<aside class="float-menu hidden lg:block" aria-label="Menu Imprimerie">
+  <div class="fm-brand">
+    <span class="fm-brand-mark"><span></span></span>
+    <div class="fm-brand-text leading-tight">
+      <strong class="font-syne text-[13px] tracking-wider uppercase block">Spotlight</strong>
+      <small class="text-[9px] uppercase tracking-widest text-gold block">Gráfica Luanda</small>
+    </div>
+  </div>
+
+  <button type="button" class="fm-mega-btn" id="desktopMegaTrigger">
+    <span class="flex items-center gap-2">
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <span>Catalogue</span>
+    </span>
+    <span class="text-[9px] px-1.5 py-0.5 rounded bg-gold/20 text-gold font-bold">9 Pôles</span>
+  </button>
+
+  <div class="my-2 border-t border-white/10 pt-2 space-y-1">
+    <a href="index.html" class="fm-link">
+      <svg class="w-4 h-4 text-bone/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5Z"/></svg>
+      <span>Studio Design</span>
+    </a>
+    <a href="#catalogue" class="fm-link active">
+      <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+      <span>Catalogue Print</span>
+      <span class="fm-badge ml-auto text-[9px] bg-gold/15 text-gold px-1.5 py-0.5 rounded-full font-bold">2026</span>
+    </a>
+    <a href="#delais-record" class="fm-link">
+      <svg class="w-4 h-4 text-bone/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>Délais Record</span>
+    </a>
+    <a href="#contact-print" class="fm-link">
+      <svg class="w-4 h-4 text-bone/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Commander</span>
+    </a>
+  </div>
+
+  <div class="mt-4 p-3 rounded-xl border border-gold/25 bg-gold/[0.05] text-[11px] text-bone/70">
+    <div class="flex items-center gap-1.5 text-gold font-bold uppercase tracking-wider mb-1">
+      <span class="pulse-beam h-1.5 w-1.5 rounded-full bg-gold"></span>
+      <span>Express Luanda</span>
+    </div>
+    <p class="leading-tight">Commandes traitées et livrées le jour même ou sous 24h/48h.</p>
+  </div>
+
+  <a href="#contact-print" class="mt-3 flex items-center justify-center gap-2 rounded-full bg-gold py-2.5 text-[12px] font-bold text-onyx shadow-lg shadow-gold/20 hover:scale-[1.02] transition">
+    <span>Devis WhatsApp</span>
+    <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+  </a>
+</aside>
+
+
+<!-- ==================================================================
+     MOBILE TOP BAR
+=================================================================== -->
+<header class="fixed inset-x-0 top-0 z-40 lg:hidden">
+  <div class="mx-4 mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-neutral-900/80 px-3.5 py-3 backdrop-blur-xl">
+    <div class="flex items-center gap-3">
+      <button type="button" id="mobileHamburgerBtn" class="grid h-9 w-9 place-items-center rounded-xl border border-white/12 bg-white/[0.04] text-bone hover:border-gold hover:text-gold" aria-label="Menu">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="pulse-beam h-2 w-2 rounded-full bg-gold"></span>
+        <span class="font-syne text-[13px] font-extrabold uppercase tracking-[0.2em] text-bone">Spotlight Print</span>
+      </a>
+    </div>
+
+    <a href="#contact-print" class="flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/[0.08] px-3 py-1.5 text-[11px] font-bold text-gold">
+      <span>Commander</span>
+      <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+    </a>
+  </div>
+</header>
+
+
+<!-- ==================================================================
+     APP MAIN CONTENT
+=================================================================== -->
+<div class="app-main">
+
+<!-- HERO BANNER LUANDA & EXPRESS -->
+<section class="relative pt-24 pb-16 md:pt-20 md:pb-24 px-5 md:px-10 border-b border-white/10 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none opacity-40"
+       style="background: radial-gradient(800px circle at 50% 10%, rgba(255,208,38,.12), transparent 70%);"></div>
+
+  <div class="relative max-w-6xl mx-auto">
+    <!-- Badges hauts -->
+    <div class="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-6">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/[0.08] px-3 py-1 text-gold font-semibold">
+        <span class="pulse-beam h-1.5 w-1.5 rounded-full bg-gold"></span>
+        Atelier Direct à Luanda
+      </span>
+      <span class="hidden sm:inline">·</span>
+      <span class="text-bone/70">Gráfica TREKO &amp; Production Signature</span>
+      <span class="hidden sm:inline">·</span>
+      <span class="text-gold font-bold">⚡ Délais Record Garantis</span>
+    </div>
+
+    <!-- Titre Principal -->
+    <h1 class="font-syne text-[clamp(2.1rem,6vw,4.6rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.03em] max-w-4xl">
+      L'Imprimerie d'élite à <span class="text-gold">Luanda</span>.<br />
+      Vos commandes livrées en <span class="font-serif italic font-normal normal-case text-bone/80">temps record</span>.
+    </h1>
+
+    <p class="mt-6 max-w-2xl text-[15px] leading-relaxed text-bone/55">
+      De la papeterie commerciale fine aux bâches géantes, vinyles covering, textiles corporate et tampons express : notre atelier équipé des technologies les plus récentes à Luanda assure une exécution millimétrée avec service <b>Same-Day</b> et livraison express dans toute la capitale et en province.
+    </p>
+
+    <!-- 3 Piliers de rapidité -->
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="p-4 rounded-2xl border border-white/10 bg-graphite/60">
+        <div class="flex items-center gap-2 text-gold font-syne text-lg font-bold">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Same-Day ⚡</span>
+        </div>
+        <p class="mt-1 text-[12px] text-bone/50">Tirages A4/A3, tampons encreurs express, plastification et cadres A6-A3 disponibles le jour même.</p>
+      </div>
+
+      <div class="p-4 rounded-2xl border border-white/10 bg-graphite/60">
+        <div class="flex items-center gap-2 text-gold font-syne text-lg font-bold">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span>24h — 48h 🚀</span>
+        </div>
+        <p class="mt-1 text-[12px] text-bone/50">Bâches événementielles, vinyles, stickers, textiles DTF et goodies avec expédition rapide.</p>
+      </div>
+
+      <div class="p-4 rounded-2xl border border-white/10 bg-graphite/60">
+        <div class="flex items-center gap-2 text-gold font-syne text-lg font-bold">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>100% Luanda 🇦🇴</span>
+        </div>
+        <p class="mt-1 text-[12px] text-bone/50">Atelier autonome sur place. Coursiers dédiés pour Talatona, Ingombota, Maianga, Viana et provinces.</p>
+      </div>
+    </div>
+
+    <!-- Actions du Hero -->
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a href="#catalogue" class="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-[13px] font-bold text-onyx shadow-xl shadow-gold/20 hover:scale-[1.02] transition">
+        <span>Explorer le Catalogue (9 Pôles)</span>
+        <svg class="h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+      </a>
+
+      <a id="heroWaDirect" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 rounded-full border border-white/15 px-6 py-3.5 text-[13px] font-medium text-bone/80 hover:border-gold hover:text-gold transition">
+        <svg class="h-4 w-4 text-gold" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+        </svg>
+        <span>Commande Express WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================================================================
+     CATALOGUE COMPLET & MOTEUR DE RECHERCHE DYNAMIQUE
+=================================================================== -->
+<section id="catalogue" class="py-16 md:py-24 px-5 md:px-10">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- En-tête catalogue & Search -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-gold font-bold mb-3">
+          <span class="h-px w-6 bg-gold"></span>
+          Catalogue Général de Production
+        </div>
+        <h2 class="font-syne text-[clamp(1.8rem,4vw,3rem)] font-extrabold uppercase leading-[0.96]">
+          Tous nos services &amp; <span class="font-serif italic font-normal normal-case text-gold">matériaux</span>
+        </h2>
+      </div>
+
+      <!-- Barre de recherche instantanée -->
+      <div class="w-full md:w-80">
+        <div class="relative">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="text" id="catalogSearch" placeholder="Filtrer un produit (ex: bâche, tampon, polo)..."
+                 class="w-full rounded-xl border border-white/12 bg-graphite pl-10 pr-4 py-2.5 text-[13px] text-bone placeholder:text-bone/30 focus:border-gold focus:outline-none transition">
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtres Pills -->
+    <div class="flex flex-wrap gap-2 pb-6 border-b border-white/10 mb-12" id="filterContainer">
+      <button type="button" class="pill-filter active rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="all">Tous (09 Pôles)</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-1">01. Papier &amp; Repro</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-2">02. Grand Format &amp; Bâches</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-3">03. Vinyles &amp; Covering</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-4">04. Textile &amp; EPI</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-5">05. Goodies &amp; Cadeaux</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-6">06. Sacs Écologiques</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-7">07. Événementiel &amp; Lanyards</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-8">08. Tampons Express</button>
+      <button type="button" class="pill-filter rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-[12px] font-medium text-bone/70 hover:border-gold/50" data-filter="cat-9">09. DTF UV &amp; Tableaux</button>
+    </div>
+
+
+    <!-- GRILLE DES 9 PÔLES DE SERVICES -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="catalogGrid">
+
+      <!-- ==================== PÔLE 1 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-1" data-cat="cat-1" data-keywords="papier a4 a3 sra3 calque vegetal autocollant transfert enveloppe photocopie plastification pelliculage reliure 80g 170g 250g">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 01</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              ⚡ Same-Day / 24h
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Impression Numérique &amp; Papeterie Commerciale</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Impression bureautique, administrative et commerciale de petit et moyen format sur un large panel de grammages et textures.
+          </p>
+
+          <div class="mt-5 space-y-4">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">1.1 Feuilles &amp; Grammages (A4, A3, SRA3/A3+)</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[12px] text-bone/70">
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Standard 80g (N&amp;B / Coul.)</li>
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Couché 170g (N&amp;B / Coul.)</li>
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Cartonné Standard 180g</li>
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Cartonné Couché 250g</li>
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Cartonné Brillant 250g</li>
+                <li class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-gold"></span>Gaufré / Relief 250g</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">1.2 Papiers Spéciaux &amp; Correspondance</h4>
+              <div class="flex flex-wrap gap-1.5 text-[11px] text-bone/65">
+                <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/5">Calque Végétal</span>
+                <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/5">Réflecteur</span>
+                <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/5">Autocollant</span>
+                <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/5">Transfert clair/foncé</span>
+                <span class="px-2 py-0.5 rounded bg-white/[0.04] border border-white/5">Enveloppes DL à A3+</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">1.3 Reprographie &amp; Façonnage</h4>
+              <p class="text-[12px] text-bone/60 leading-relaxed">
+                Photocopies A3 80g &amp; A3+ 180g · Plastification A5-A3 · Pelliculage (Laminação) Recto &amp; Recto-verso A4-A3+ · Reliure A4-A3.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Livraison express Luanda</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Impression Numérique & Papeterie Commerciale">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 2 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-2" data-cat="cat-2" data-keywords="grand format bache frontlight backlight mesh microperforee blockout affiches posters a2 a1 a0 drapeaux oriflammes">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 02</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              🚀 24h — 48h Luanda
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Grand Format &amp; Signalétique Extérieure</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Visibilité maximale pour événements, promotions urbaines, façades et panneaux routiers.
+          </p>
+
+          <div class="mt-5 space-y-4">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">2.1 Affiches &amp; Posters Géants</h4>
+              <p class="text-[12px] text-bone/70">Tirages A2, A1, A0 en plein fond ou fond blanc (papier cartonné standard ou papier poster haute résolution).</p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">2.2 Bâches &amp; Toiles Événementielles</h4>
+              <ul class="space-y-1.5 text-[12px] text-bone/70">
+                <li class="flex items-start gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold mt-1.5 shrink-0"></span>
+                  <span><b>Frontlight :</b> Finition brillante ou mate (affichage promotionnel standard).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold mt-1.5 shrink-0"></span>
+                  <span><b>Backlight :</b> Toile translucide pour caissons lumineux et rétro-éclairage.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold mt-1.5 shrink-0"></span>
+                  <span><b>Microperforée (Mesh) :</b> Pour façades d'immeubles, échafaudages et zones exposées au vent.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="h-1.5 w-1.5 rounded-full bg-gold mt-1.5 shrink-0"></span>
+                  <span><b>Blockout :</b> Toile 100% opaque occultante pour impression recto-verso sans transparence.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">2.3 Signalétique Mobile</h4>
+              <p class="text-[12px] text-bone/60">Drapeaux institutionnels, oriflammes et pavillons publicitaires résistants aux intempéries.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Œillets &amp; ourlets renforcés</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Grand Format & Bâches">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 3 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-3" data-cat="cat-3" data-keywords="adhesifs vinyles covering vehicules vitrophanie depoli sable microperfore sol floor graphic stickers decoupe plotter">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 03</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              ⚡ Découpe Précision
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Adhésifs, Vinyles &amp; Habillage (Covering)</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Marquage adhésif sur mesure pour véhicules, vitrines, sols et façades professionnelles.
+          </p>
+
+          <div class="mt-5 space-y-3.5">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">3.1 Vinyles Techniques &amp; Vitrophanie</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                Vinyle blanc (brillant/mat), transparent, microperforé (One Way Vision), vinyle dépoli/sablé (intimité verre givré), électrostatique (sans colle) et rétro-réfléchissant nuit.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">3.2 Covering Véhicules &amp; Marquage au Sol</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                Habillage partiel ou total de flotte automobile (vinyle coulé thermoformable) et vinyle <i>Floor Graphic</i> antidérapant certifié pour sols commerciaux.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">3.3 Découpe &amp; Stickers</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                Lettrage teinté masse découpé au plotter et stickers personnalisés à la forme (Kiss-cut / Die-cut).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Pose possible sur site à Luanda</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Vinyles, Adhésifs & Covering">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 4 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-4" data-cat="cat-4" data-keywords="textile personnalise t-shirts polos broderie dtf uniformes fardements epi gilets securite chantier casques casquettes bobs safari panama visieres">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 04</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              👕 Broderie &amp; DTF
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Textile Personnalisé, Tenues Pro &amp; EPI</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Vêtements d'image, fardements d'entreprises et équipements de protection individuelle normés.
+          </p>
+
+          <div class="mt-5 space-y-3.5">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">4.1 Vêtements d'Entreprise</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                T-shirts coton/polyester, Polos corporate haute densité (marquage sérigraphie, DTF ou broderie fine), uniformes métiers (hôtellerie, industrie, santé) et tabliers.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">4.2 Équipements de Sécurité (EPI)</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                Gilets de sécurité fluorescents réfléchissants (verts/jaunes), gilets de chantier multipoches et casques de chantier personnalisés avec logo de votre entreprise.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1.5">4.3 Couvre-Chefs</h4>
+              <p class="text-[12px] text-bone/70 leading-relaxed">
+                Casquettes brodées, chapeaux Panama, Bobs (Bucket hats), chapeaux de brousse/Safari avec filet protecteur et visières publicitaires.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Tailles S au 4XL disponibles</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Textile Personnalisé & EPI">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 5 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-5" data-cat="cat-5" data-keywords="goodies objets publicitaires cadeaux affaires stylos laser touch agendas carnets mugs ceramique magiques gourdes porte-cles powerbanks cles usb coques pins badges">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 05</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              🎁 Cadeaux d'Affaires
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Goodies, Objets Publicitaires &amp; Cadeaux d'Affaires</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Objets corporate pour marquer l'esprit de vos partenaires et clients lors d'événements et salons.
+          </p>
+
+          <div class="mt-5 space-y-3">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">Écriture &amp; Papeterie</h4>
+              <p class="text-[12px] text-bone/70">Stylos bille plastique &amp; métal, gravure laser de précision, embout tactile Touch, carnets de notes et agendas en cuir ou tissu.</p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">Boissons &amp; Quotidien</h4>
+              <p class="text-[12px] text-bone/70">Mugs en céramique blancs, mugs magiques à révélation thermique, gourdes inox isothermes, porte-clés métal/bois MDF/PVC.</p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">High-Tech &amp; Badges</h4>
+              <p class="text-[12px] text-bone/70">Batteries externes (powerbanks), clés USB personnalisées, coques smartphones et badges métalliques ronds à épingle.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Gravure laser &amp; UV</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Goodies & Objets Publicitaires">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 6 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-6" data-cat="cat-6" data-keywords="emballages sacs ecologiques tnt reutilisable tote bags coton shopping pochettes cabas packaging">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 06</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              🌱 Éco-Responsable
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Emballages &amp; Sacs Écologiques</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Solutions de transport durable et packaging boutique pour valoriser votre marque au quotidien.
+          </p>
+
+          <ul class="mt-5 space-y-2.5 text-[12px] text-bone/70">
+            <li class="flex items-center gap-2.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              <span><b>Sacs Écologiques en Non-Tissé (TNT) :</b> Réutilisables, ultra résistants, disponibles en multiples teintes.</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              <span><b>Tote Bags en Toile de Coton :</b> Matière naturelle 100% coton, élégant et prisé pour les événements.</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              <span><b>Sacs Cabas &amp; Pochettes Shopping :</b> Formats personnalisés pour boutiques de mode et commerces.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Réutilisable &amp; lavable</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Emballages & Sacs Écologiques">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 7 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-7" data-cat="cat-7" data-keywords="evenementiel controle acces identification bracelets tyvek satin lanyards tours de cou rubans washcare">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 07</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              ⚡ Livraison Événements
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Événementiel, Contrôle d'Accès &amp; Identification</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Gestion des flux de visiteurs et visibilité de marque pour conférences, concerts, salons et festivals.
+          </p>
+
+          <div class="mt-5 space-y-3">
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">Bracelets de Contrôle Inviolables</h4>
+              <p class="text-[12px] text-bone/70">Bracelets Tyvek (fins ou larges, vierges ou marqués laser), bracelets satin tissé haute sécurité, et bracelets adhésifs.</p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">Tours de Cou (Lanyards)</h4>
+              <p class="text-[12px] text-bone/70">Rubans tour de cou avec mousqueton métal et boucle de sécurité, impression quadrichromie pour badges VIP.</p>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">Rubans Satin &amp; Étiquettes</h4>
+              <p class="text-[12px] text-bone/70">Rubans satin 20mm pour packaging cadeau et rubans d'entretien <i>Washcare</i> 20mm pour marques textiles.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Kits événementiels express</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Événementiel, Bracelets & Lanyards">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 8 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between" id="cat-8" data-cat="cat-8" data-keywords="tampons encreurs marquage administratif dateurs numeroteurs bois acrylique poche recharge encre express">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 08</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              ⚡ Même Jour (Same-Day)
+            </span>
+          </div>
+
+          <h3 class="font-syne text-xl font-bold text-bone">Tampons Encreurs &amp; Marquage Administratif</h3>
+          <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+            Outils d'authentification certifiés pour entreprises, cabinets juridiques, banques et institutions.
+          </p>
+
+          <ul class="mt-5 space-y-2 text-[12px] text-bone/70">
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span><b>Tampons Automatiques :</b> Formats rectangulaires, ronds, ovales ou carrés (encre intégrée).</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span><b>Tampons Traditionnels :</b> Manche en bois noble ou socle acrylique haute durabilité.</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span><b>Tampons de Poche :</b> Modèles pliables compacts pour dirigeants et commerciaux itinérants.</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span><b>Dateurs &amp; Numéroteurs :</b> Modèles automatiques réglables pour comptabilité et archivage.</li>
+            <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-gold"></span><b>Consommables :</b> Flacons d'encre (noir, bleu, rouge, vert) et cassettes encreurs de rechange.</li>
+          </ul>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-gold font-semibold">Prêt en 2h à Luanda</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="Tampons Encreurs Express">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+
+      <!-- ==================== PÔLE 9 ==================== -->
+      <article class="card-print p-7 flex flex-col justify-between md:col-span-2" id="cat-9" data-cat="cat-9" data-keywords="dtf uv tableaux decoratifs cadres photo numeriques a6 a5 a4 a3 a2 a1 a0 transfert uv rigide">
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="font-syne text-xs font-bold text-gold tracking-widest">PÔLE 09</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-gold/[0.1] px-2.5 py-0.5 text-[10px] font-bold text-gold">
+              🖼️ Haute Définition
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-syne text-xl font-bold text-bone">Impression Spéciale &amp; Tableaux Décoratifs</h3>
+              <p class="mt-2 text-[13px] text-bone/55 leading-relaxed">
+                Procédés d'impression directe par transfert UV et encadrements de prestige pour l'aménagement d'espaces et cadeaux VIP.
+              </p>
+
+              <div class="mt-4 p-4 rounded-xl border border-white/10 bg-coal/70">
+                <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">DTF UV — Transfert Direct sur Rigides</h4>
+                <p class="text-[12px] text-bone/70 leading-relaxed">
+                  Technologie d'impression par transfert direct UV (formats A4 et A3). Adhérence parfaite sans cuisson sur métal, verre, bois, céramique, cuir et acrylique.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-[11px] font-bold uppercase tracking-wider text-gold mb-2">Cadres Photo &amp; Tableaux Décoratifs</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12px]">
+                <div class="p-3 rounded-xl border border-gold/30 bg-gold/[0.05]">
+                  <span class="block font-bold text-gold mb-1">⚡ Prêt le Jour Même</span>
+                  <p class="text-bone/70 text-[11.5px]">Formats de table et muraux compacts :</p>
+                  <span class="font-syne font-bold text-bone text-sm mt-1 block">A6 · A5 · A4 · A3</span>
+                </div>
+
+                <div class="p-3 rounded-xl border border-white/10 bg-white/[0.03]">
+                  <span class="block font-bold text-bone/80 mb-1">🚀 Livré sous 48h</span>
+                  <p class="text-bone/70 text-[11.5px]">Grands formats d'exposition :</p>
+                  <span class="font-syne font-bold text-gold text-sm mt-1 block">A2 · A1 · A0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] text-bone/40">Finition verre anti-reflet &amp; bois massif</span>
+          <button type="button" class="btn-order inline-flex items-center gap-2 text-[12px] font-bold text-gold hover:underline" data-product="DTF UV & Tableaux Décoratifs">
+            <span>Commander ce service</span>
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================================================================
+     SECTION DÉLAIS RECORD & LOGISTIQUE LUANDA
+=================================================================== -->
+<section id="delais-record" class="py-20 px-5 md:px-10 border-t border-white/10 bg-graphite/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/[0.08] px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold mb-3">
+        <span>⚡ Notre Engagement Chiffré</span>
+      </div>
+      <h2 class="font-syne text-[clamp(1.9rem,4.5vw,3.2rem)] font-extrabold uppercase leading-[0.96]">
+        Comment garantissons-nous des livraisons en <span class="font-serif italic font-normal text-gold">temps record</span> ?
+      </h2>
+      <p class="mt-4 text-[14px] text-bone/50">
+        Grâce à notre unité de production directe basée à Luanda, aucun intermédiaire ne retarde votre projet.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-8 rounded-2xl border border-white/10 bg-onyx/80">
+        <span class="font-syne text-4xl font-extrabold text-gold">01</span>
+        <h3 class="mt-4 font-syne text-lg font-bold text-bone">Parc Machine Intégré</h3>
+        <p class="mt-2 text-[13px] text-bone/50 leading-relaxed">
+          Presses numériques Konica &amp; Xerox, traceurs grand format UV et éco-solvant, brodeuses multi-têtes et laser de découpe sur place.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-2xl border border-white/10 bg-onyx/80">
+        <span class="font-syne text-4xl font-extrabold text-gold">02</span>
+        <h3 class="mt-4 font-syne text-lg font-bold text-bone">Stock Permanent à Luanda</h3>
+        <p class="mt-2 text-[13px] text-bone/50 leading-relaxed">
+          Papiers couchés de 80g à 250g, rouleaux de bâches, vinyles, textiles neutres et montures de tampons immédiatement disponibles.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-2xl border border-white/10 bg-onyx/80">
+        <span class="font-syne text-4xl font-extrabold text-gold">03</span>
+        <h3 class="mt-4 font-syne text-lg font-bold text-bone">Logistique &amp; Coursiers Dédiés</h3>
+        <p class="mt-2 text-[13px] text-bone/50 leading-relaxed">
+          Livraison express à votre bureau : Talatona, Ingombota, Maianga, Maculusso, Viana, Kilamba, et expéditions rapides par fret provincial.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================================================================
+     FORMULAIRE COMMANDE & DEVIS EXPRESS
+=================================================================== -->
+<section id="contact-print" class="py-20 px-5 md:px-10 border-t border-white/10">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-[10px] font-bold uppercase tracking-[0.28em] text-gold">Commande Immédiate</span>
+      <h2 class="font-syne text-[clamp(1.9rem,4vw,3.2rem)] font-extrabold uppercase leading-[0.96] mt-2">
+        Passez votre commande en <span class="font-serif italic font-normal text-gold">express</span>
+      </h2>
+      <p class="mt-3 text-[13.5px] text-bone/50">
+        Indiquez vos besoins, notre équipe vous répond sous 30 minutes avec un bon à tirer (BAT) et une estimation de livraison à Luanda.
+      </p>
+    </div>
+
+    <form id="printOrderForm" class="p-8 rounded-2xl border border-white/12 bg-graphite space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-[10px] uppercase tracking-wider text-bone/50 mb-2">Votre Nom ou Entreprise</label>
+          <input type="text" id="orderName" required placeholder="Ex: Banco ou Entreprise Luanda"
+                 class="w-full rounded-lg border border-white/12 bg-onyx px-4 py-3 text-[13px] text-bone focus:border-gold focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-[10px] uppercase tracking-wider text-bone/50 mb-2">Téléphone / WhatsApp</label>
+          <input type="tel" id="orderPhone" required placeholder="+244 9..."
+                 class="w-full rounded-lg border border-white/12 bg-onyx px-4 py-3 text-[13px] text-bone focus:border-gold focus:outline-none">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-[10px] uppercase tracking-wider text-bone/50 mb-2">Pôle / Service Demandé</label>
+          <select id="orderService" required
+                  class="w-full rounded-lg border border-white/12 bg-onyx px-4 py-3 text-[13px] text-bone focus:border-gold focus:outline-none">
+            <option value="">Sélectionner une catégorie</option>
+            <option value="01. Impression Numérique & Papeterie">01. Impression Numérique &amp; Papeterie (A4/A3)</option>
+            <option value="02. Grand Format & Bâches">02. Grand Format &amp; Bâches (Frontlight/Mesh)</option>
+            <option value="03. Vinyles & Covering">03. Vinyles, Vitrophanie &amp; Covering</option>
+            <option value="04. Textile & EPI">04. Textile Personnalisé &amp; EPI Chantiers</option>
+            <option value="05. Goodies & Objets">05. Goodies &amp; Objets Publicitaires</option>
+            <option value="06. Sacs Écologiques">06. Sacs Écologiques en TNT &amp; Coton</option>
+            <option value="07. Événementiel & Lanyards">07. Événementiel, Bracelets &amp; Lanyards</option>
+            <option value="08. Tampons Encreurs">08. Tampons Encreurs Express (Same-Day)</option>
+            <option value="09. DTF UV & Tableaux">09. DTF UV &amp; Tableaux Photo Déco</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] uppercase tracking-wider text-bone/50 mb-2">Délai Souhaité</label>
+          <select id="orderUrgency"
+                  class="w-full rounded-lg border border-white/12 bg-onyx px-4 py-3 text-[13px] text-bone focus:border-gold focus:outline-none">
+            <option value="Urgence Same-Day (Le jour même à Luanda)">⚡ Urgence Same-Day (Le jour même à Luanda)</option>
+            <option value="Express 24h à Luanda" selected>🚀 Express 24h à Luanda</option>
+            <option value="Standard 48h">📅 Standard 48h</option>
+            <option value="Livraison en Province">📍 Expédition en Province</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[10px] uppercase tracking-wider text-bone/50 mb-2">Détails de la Commande (Quantité, Formats, Finitions)</label>
+        <textarea id="orderDetails" rows="3" required placeholder="Ex: 500 polos brodés avec logo poitrine, 2 bâches frontlight 4x3m avec œillets..."
+                  class="w-full rounded-lg border border-white/12 bg-onyx px-4 py-3 text-[13px] text-bone focus:border-gold focus:outline-none"></textarea>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+        <button type="submit" class="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-[13px] font-bold text-onyx hover:scale-[1.02] shadow-lg shadow-gold/20 transition">
+          <span>Envoyer sur WhatsApp pour Réponse sous 30min</span>
+          <svg class="h-3.5 w-3.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5"/></svg>
+        </button>
+
+        <span class="text-[11px] text-bone/40">
+          Atelier Luanda : <b>+244 900 000 000</b>
+        </span>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<!-- ==================================================================
+     FOOTER
+=================================================================== -->
+<footer class="border-t border-white/10 px-5 py-12 md:px-10">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-[12px] text-bone/40">
+    <div class="flex items-center gap-2">
+      <span class="pulse-beam h-2 w-2 rounded-full bg-gold"></span>
+      <span class="font-syne font-bold uppercase text-bone">Spotlight Imprimerie · Gráfica TREKO</span>
+      <span>— Luanda, Angola</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="hover:text-gold transition">Studio Design</a>
+      <span>·</span>
+      <a href="#catalogue" class="hover:text-gold transition">Catalogue 9 Pôles</a>
+      <span>·</span>
+      <a href="#contact-print" class="hover:text-gold transition">Commander</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.app-main -->
+
+
+<!-- SCRIPT INTERACTIF POUR LA RECHERCHE, LES FILTRES ET LES COMMANDES WHATSAPP -->
+<script>
+(function() {
+  'use strict';
+  const CFG = window.SPOTLIGHT_CONFIG || {};
+
+  // Setup WhatsApp Links
+  const waLink = 'https://wa.me/' + (CFG.WHATSAPP_NUMBER || '').replace(/\D/g, '') +
+    '?text=' + encodeURIComponent('Bonjour SPOTLIGHT Print Luanda, je souhaite passer une commande d\'impression.');
+  const heroWa = document.getElementById('heroWaDirect');
+  if (heroWa) heroWa.href = waLink;
+
+  // Mega Menu Logic
+  const megaModal = document.getElementById('megaMenuModal');
+  function openMega() {
+    if (megaModal) {
+      megaModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeMega() {
+    if (megaModal) {
+      megaModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll('#mobileHamburgerBtn, #desktopMegaTrigger').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.preventDefault(); openMega(); });
+  });
+  document.querySelectorAll('[data-mega-close]').forEach(el => {
+    el.addEventListener('click', closeMega);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && megaModal?.classList.contains('open')) closeMega();
+  });
+
+  // Dynamic Search & Filtering in Catalog
+  const searchInput = document.getElementById('catalogSearch');
+  const cards = Array.from(document.querySelectorAll('#catalogGrid article'));
+  const filterButtons = document.querySelectorAll('#filterContainer .pill-filter');
+  let currentFilter = 'all';
+
+  function filterCards() {
+    const q = (searchInput?.value || '').toLowerCase().trim();
+
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const keywords = (card.dataset.keywords || '').toLowerCase();
+      const text = card.textContent.toLowerCase();
+
+      const matchesCategory = (currentFilter === 'all' || cat === currentFilter);
+      const matchesSearch = !q || keywords.includes(q) || text.includes(q);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterCards);
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      filterCards();
+    });
+  });
+
+  // Direct Order Button on Each Card
+  document.querySelectorAll('.btn-order').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const product = btn.dataset.product || 'Impression';
+      const select = document.getElementById('orderService');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(product.split(' ')[0])) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      const formSection = document.getElementById('contact-print');
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('orderName')?.focus();
+      }
+    });
+  });
+
+  // Order Form Handling -> Direct WhatsApp message
+  const orderForm = document.getElementById('printOrderForm');
+  if (orderForm) {
+    orderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('orderName').value.trim();
+      const phone = document.getElementById('orderPhone').value.trim();
+      const service = document.getElementById('orderService').value;
+      const urgency = document.getElementById('orderUrgency').value;
+      const details = document.getElementById('orderDetails').value.trim();
+
+      const lines = [
+        '⚡ NOUVELLE COMMANDE EXPRESS — SPOTLIGHT PRINT LUANDA',
+        '',
+        '• Client / Entreprise : ' + name,
+        '• Téléphone : ' + phone,
+        '• Prestation : ' + (service || 'Non spécifié'),
+        '• Délai souhaité : ' + urgency,
+        '',
+        'Détails de la commande :',
+        details,
+        '',
+        '— Envoyé depuis spotlight.design/imprimerie'
+      ];
+
+      const url = 'https://wa.me/' + (CFG.WHATSAPP_NUMBER || '').replace(/\D/g, '') +
+                  '?text=' + encodeURIComponent(lines.join('\n'));
+
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
