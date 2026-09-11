@@ -717,6 +717,25 @@ tailwind.config = {
     .search-footer { display: none; }
   }
 
+  /* Flash lumineux doré pour cibler un résultat de recherche sur la page */
+  @keyframes searchHighlightPulse {
+    0%   { outline: 3px solid rgba(255, 208, 38, 0.95); box-shadow: 0 0 45px rgba(255, 208, 38, 0.7); }
+    35%  { outline: 3px solid rgba(255, 208, 38, 0.65); box-shadow: 0 0 25px rgba(255, 208, 38, 0.45); }
+    100% { outline: 3px solid transparent; box-shadow: none; }
+  }
+  .search-highlight-flash {
+    animation: searchHighlightPulse 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    border-radius: 12px;
+  }
+
+  /* Styles capsule des yeux interactifs */
+  .spotlight-eyes-pod {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .spotlight-eyes-pod:hover {
+    transform: scale(1.025);
+  }
+
   /* ============================================================
      CINEMATIC HERO — scrolling text rows
   ============================================================ */
@@ -1876,40 +1895,40 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Sphère de Particules Aimantées Luminescentes -->
+      <!-- Regard Interactif Studio — Yeux Dynamiques Suivant Curseur & Doigt -->
       <div class="reveal md:col-span-4 md:col-start-9 md:justify-self-end md:self-center">
-        <div class="magnetic-orb-container relative h-48 w-48 md:h-60 md:w-60 flex items-center justify-center select-none" id="particleOrbContainer">
+        <div class="spotlight-eyes-pod relative h-52 w-52 md:h-64 md:w-64 flex items-center justify-center select-none" id="eyesOrbContainer" aria-label="Regard interactif Studio Spotlight">
           
-          <!-- Anneau orbital extérieur en rotation lente -->
+          <!-- Anneau orbital extérieur en rotation lente avec boussole dorée -->
           <svg class="spin-slow absolute inset-0 h-full w-full text-bone/25 pointer-events-none" viewBox="0 0 200 200" fill="none" aria-hidden="true">
             <defs>
-              <path id="circlePathServices" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
+              <path id="circlePathEyes" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/>
             </defs>
-            <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.6"/>
-            <circle cx="100" cy="100" r="76" stroke="rgba(255,208,38,0.25)" stroke-width="0.75"/>
+            <circle cx="100" cy="100" r="96" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.6"/>
+            <circle cx="100" cy="100" r="78" stroke="rgba(255,208,38,0.3)" stroke-width="0.75"/>
             <text fill="currentColor" font-size="8.5" letter-spacing="4.8" opacity="0.75" style="text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif;">
-              <textPath href="#circlePathServices" startOffset="0%">· Spotlight Creative Studio · International · Luanda ·</textPath>
+              <textPath href="#circlePathEyes" startOffset="0%">· Spotlight Creative Eyes · Suivi Interactif · Luanda ·</textPath>
             </text>
           </svg>
 
-          <!-- Halo lumineux diffus en arrière-plan -->
-          <div class="absolute inset-4 rounded-full bg-gold/[0.08] blur-xl pointer-events-none"></div>
+          <!-- Halo lumineux doré diffus -->
+          <div class="absolute inset-4 rounded-full bg-gold/[0.1] blur-2xl pointer-events-none transition-all duration-500" id="eyesAmbientHalo"></div>
 
-          <!-- Sphère Canvas des particules aimantées -->
-          <div class="relative h-36 w-36 md:h-44 md:w-44 rounded-full border border-gold/35 bg-gradient-to-b from-[#141720]/85 via-[#0F1218]/90 to-[#0A0B0E] p-1 shadow-[0_0_35px_rgba(255,208,38,0.14)] backdrop-blur-md overflow-hidden cursor-crosshair group" title="Interagissez avec les particules aimantées">
-            <canvas id="magneticParticlesCanvas" class="h-full w-full block rounded-full"></canvas>
+          <!-- Capsule des Yeux en Verre Saphir & Finition Luxe -->
+          <div class="relative h-40 w-40 md:h-48 md:w-48 rounded-full border-2 border-gold/40 bg-gradient-to-b from-[#161922] via-[#0F1218] to-[#0A0B0E] p-2 shadow-[0_0_40px_rgba(255,208,38,0.18)] backdrop-blur-md overflow-hidden cursor-pointer group" id="eyesClickableTrigger" title="Touchez ou bougez votre souris pour interagir avec le regard">
             
-            <!-- Cœur central discret et élégant -->
-            <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div class="h-2 w-2 rounded-full bg-gold shadow-[0_0_12px_#FFD026] animate-pulse"></div>
-            </div>
+            <!-- Canvas des Yeux Dynamiques -->
+            <canvas id="spotlightEyesCanvas" class="h-full w-full block rounded-full"></canvas>
+
           </div>
 
-          <!-- Légende discrète sous l'orbe -->
-          <span class="pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[8.5px] uppercase tracking-[0.26em] text-gold/70 font-semibold flex items-center gap-1.5">
-            <span class="h-1 w-1 rounded-full bg-gold animate-ping"></span>
-            Particules Aimantées
-          </span>
+          <!-- Badge dynamique d'émotion sous le regard -->
+          <div class="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-gold/35 bg-black/80 backdrop-blur-md text-[9px] uppercase tracking-[0.22em] text-gold font-bold shadow-lg shadow-gold/10 transition-all" id="eyeStatusBadge">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" id="eyeStatusDot"></span>
+              <span id="eyeStatusText">Regard attentif</span>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -2947,7 +2966,7 @@ tailwind.config = {
         <path d="m20 20-3.5-3.5"/>
       </svg>
       <input id="searchInput" class="search-input" type="text"
-             placeholder="Rechercher une section, un projet, un service…"
+             placeholder="Rechercher n'importe quoi : projet, impression, budget, service, texte…"
              aria-label="Champ de recherche" autocomplete="off" spellcheck="false" />
       <kbd class="search-kbd">Esc</kbd>
     </div>
@@ -3135,35 +3154,53 @@ tailwind.config = {
      UNIVERSAL SEARCH — index, overlay, keyboard nav
   ============================================================ */
   const SEARCH_INDEX = [
-    // --- Sections ---
-    { type:'Section', icon:'home',   id:'hero',     title:'Accueil',   desc:'Transformer chaque vision en chef-d\'œuvre visuel', keywords:'hero accueil home studio présentation intro' },
-    { type:'Section', icon:'grid',   id:'works',    title:'Travaux',   desc:'Œuvres sélectionnées — projets signature',        keywords:'works projets portfolio réalisations' },
-    { type:'Section', icon:'sparkle',id:'services', title:'Services',  desc:'4 piliers créatifs & capacités',                  keywords:'services capacités offre prestations' },
-    { type:'Section', icon:'compass',id:'process',  title:'Processus', desc:'Immersion · Direction · Prototypage · Déploiement', keywords:'process méthode étapes workflow' },
-    { type:'Section', icon:'user',   id:'about',    title:'À Propos',  desc:'Studio indépendant — manifeste & garanties',       keywords:'about studio équipe philosophie manifeste' },
-    { type:'Section', icon:'mail',   id:'contact',  title:'Contact',   desc:'Démarrer un projet — formulaire & WhatsApp',       keywords:'contact brief devis formulaire whatsapp' },
+    // --- Sections du Site ---
+    { type:'Section', icon:'home',     id:'hero',              title:'Accueil & Hero',                 desc:'Transformer chaque vision en chef-d\'œuvre visuel · Studio Spotlight', keywords:'hero accueil home studio présentation intro luanda kinshasa' },
+    { type:'Section', icon:'grid',     id:'works',             title:'Travaux & Réalisations',         desc:'Œuvres sélectionnées — portfolio & projets signature internationaux', keywords:'works projets portfolio réalisations créations clients études de cas' },
+    { type:'Section', icon:'sparkle',  id:'services',          title:'Services Studio',                desc:'4 piliers créatifs d\'excellence & capacités de production',        keywords:'services capacités offre prestations direction artistique print web 3d' },
+    { type:'Section', icon:'compass',  id:'process',           title:'Processus & Méthodologie',       desc:'Immersion · Direction · Prototypage · Déploiement & Impression',     keywords:'process méthode étapes workflow rigueur cadrage livraison' },
+    { type:'Section', icon:'user',     id:'about',             title:'À Propos & Manifeste',           desc:'Studio indépendant — équipe, manifeste créatif & garanties d\'artisanat', keywords:'about studio équipe philosophie manifeste artisanat garanties' },
+    { type:'Section', icon:'dollar',   id:'contact',           title:'Simulateur de Budget ($ / €)',   desc:'Estimer un budget en Dollars Américains ($ USD) et en Euros (€ EUR)', keywords:'budget simulateur devis tarif prix dollars euros estimation acompte' },
+    { type:'Section', icon:'font',     id:'typoReaderWidget',  title:'Régleur de Typographie',         desc:'Ajuster la taille du texte avec la molette douce (A- / A+)',          keywords:'typo typographie taille texte zoom police lecture accessibilité son' },
+    { type:'Section', icon:'eye',      id:'eyesOrbContainer',  title:'Regard Interactif Studio',       desc:'Yeux animés qui suivent le curseur et le toucher tactile sur mobile',  keywords:'yeux regard eyes interactif pointeur curseur mobile toucher animation' },
+    { type:'Section', icon:'mail',     id:'contact',           title:'Contact & Brief Direct',         desc:'Démarrer un projet — formulaire express, email & WhatsApp',            keywords:'contact brief devis formulaire whatsapp message rdv' },
 
-    // --- Projects & Websites Created ---
-    { type:'Projet', icon:'image', id:'works', caseKey:'casalinka', url:'https://www.casalinka.app', title:'Casalinka — Le Portail Immobilier en Angola (casalinka.app)', desc:'Site d\'immobilier en Angola · Achat, vente & location de biens · Recherche cartographique', keywords:'casalinka casalinka.app immobilier angola luanda location vente maison appartement proptech' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'treko', url:'https://www.treko.ao', title:'Gráfica TREKO — Atelier d\'Impression Luanda (treko.ao)', desc:'E-Commerce & Print · Luanda Angola · Catalogue 9 catégories · Livraison Express', keywords:'treko treko.ao grafica imprimerie luanda angola print atelier express' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'wisecd', url:'https://www.wise.cd', title:'WISE.CD — Site d\'Information & Magazine en RDC (wise.cd)', desc:'Site d\'information et grand magazine digital d\'actualités en RDC', keywords:'wise wise.cd rdc kinshasa magazine information media presse actualites' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'ambaguiluinda', url:'https://www.ambaguiluanda.it.ao', title:'Ambassade de Guinée en Angola — RDV en Ligne (ambaguiluanda.it.ao)', desc:'Site officiel de prise de rendez-vous de l\'Ambassade de Guinée en Angola', keywords:'ambassade guinee angola ambaguiluanda ambaguiluinda it.ao rdv visa passeport consulat diplomatie' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'pambala', url:'https://www.pambala.ao', title:'Pambala — Produits Digitaux, eSIM & Cartes Cadeaux (pambala.ao)', desc:'Cartes cadeaux Apple, Amazon, Netflix, Play Store · eSIM internationale · Crédits & Jeux', keywords:'pambala pambala.ao gift card apple amazon netflix playstore esim jeux credit digital angola' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'auradigital', url:'https://www.auradigital.ao', title:'Aura Digital — Clés de Jeux Vidéo & Softwares (auradigital.ao)', desc:'Vente de clés de jeux vidéo & softwares à bon prix tout digital en Angola', keywords:'aura digital auradigital auradigital.ao jeux video software logiciels cles cles cd steam gaming bon prix' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'spotlightrdc', url:'https://www.spotlightrdc.cd', title:'Spotlight RDC — Studio de Création Spotlight (spotlightrdc.cd)', desc:'Direction Artistique · Identité de luxe · Médias & Web Kinshasa', keywords:'spotlight spotlightrdc spotlightrdc.cd rdc kinshasa studio agence luxe' },
-    { type:'Projet', icon:'image', id:'works', caseKey:'zero', url:'https://www.zero.ao', title:'Zero Angola — Marque Streetwear en Angola (zero.ao)', desc:'Site de la marque de vêtements streetwear en Angola · E-shop & mode urbaine', keywords:'zero zero.ao angola streetwear marque vetements mode urbanwear fashion' },
+    // --- Sites Clients & Réalisations Créées ---
+    { type:'Projet', icon:'globe', id:'works', caseKey:'casalinka', url:'https://www.casalinka.app', title:'Casalinka — Portail Immobilier en Angola (casalinka.app)', desc:'Site d\'immobilier en Angola · Achat, vente & location de biens à Luanda · Recherche cartographique', keywords:'casalinka casalinka.app immobilier angola luanda location vente maison appartement proptech villa' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'treko', url:'https://www.treko.ao', title:'Gráfica TREKO — Atelier d\'Impression Luanda (treko.ao)', desc:'E-Commerce & Print · Luanda Angola · Catalogue 9 pôles d\'impression · Livraison Express', keywords:'treko treko.ao grafica imprimerie luanda angola print atelier express baches textile enseignes carterie' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'wisecd', url:'https://www.wise.cd', title:'WISE.CD — Média & Magazine en RDC (wise.cd)', desc:'Site d\'information et grand magazine digital d\'actualités en République Démocratique du Congo', keywords:'wise wise.cd rdc kinshasa magazine information media presse actualites journal congo' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'ambaguiluinda', url:'https://www.ambaguiluanda.it.ao', title:'Ambassade de Guinée en Angola — RDV en Ligne (ambaguiluanda.it.ao)', desc:'Site officiel de prise de rendez-vous de l\'Ambassade de la République de Guinée en Angola · Visas & Passeports', keywords:'ambassade guinee angola ambaguiluanda ambaguiluinda it.ao rdv visa passeport consulat diplomatie conakry' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'pambala', url:'https://www.pambala.ao', title:'Pambala — Produits Digitaux, eSIM & Cartes Cadeaux (pambala.ao)', desc:'Cartes cadeaux Apple, Amazon, Netflix, Play Store · eSIM internationale · Crédits de jeu & abonnements', keywords:'pambala pambala.ao gift card apple amazon netflix playstore play store esim jeux credit digital angola abonnements' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'auradigital', url:'https://www.auradigital.ao', title:'Aura Digital — Clés de Jeux Vidéo & Softwares (auradigital.ao)', desc:'Vente de clés de jeux vidéo & softwares à bon prix tout digital en Angola · Licences PC & consoles', keywords:'aura digital auradigital auradigital.ao jeux video logiciels software cles cd steam gaming bon prix licences' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'spotlightrdc', url:'https://www.spotlightrdc.cd', title:'Spotlight RDC — Studio de Création Spotlight (spotlightrdc.cd)', desc:'Direction Artistique · Identité de luxe · Médias & Plateforme Web Kinshasa & International', keywords:'spotlight spotlightrdc spotlightrdc.cd rdc kinshasa studio agence luxe da marque identite' },
+    { type:'Projet', icon:'globe', id:'works', caseKey:'zero', url:'https://www.zero.ao', title:'Zero Angola — Marque Streetwear en Angola (zero.ao)', desc:'Site de la marque de vêtements streetwear en Angola · E-shop mode urbaine, hoodies & tees', keywords:'zero zero.ao angola streetwear marque vetements mode urbanwear fashion shop luanda' },
 
-    // --- Services & Categories ---
-    { type:'Service', icon:'sparkle', id:'imprimerie-link', url:'imprimerie.html', title:'Imprimerie Luanda — Gráfica TREKO (Page dédiée)', desc:'9 pôles d\'impression à Luanda · Commandes Express 24h/48h · Devis instantané', keywords:'imprimerie luanda angola treko print offset numerique bâches packaging carterie textile' },
-    { type:'Service', icon:'sparkle', id:'services', title:'Direction Artistique & Identité', desc:'Logos · Chartes 60p+ · Systèmes typographiques', keywords:'direction artistique branding identité charte logo' },
-    { type:'Service', icon:'sparkle', id:'services', title:'Impression Haute Définition & Finitions', desc:'300 DPI · CMJN · Foil 24k · Emboss · Laser · Luanda', keywords:'impression print 300dpi cmjn pantone foil emboss luanda' },
-    { type:'Service', icon:'sparkle', id:'services', title:'UI/UX & Expériences Web Responsive', desc:'Design System · Prototype Figma · Front-end moderne · Supabase', keywords:'ui ux design web figma prototype front-end react supabase responsive' },
-    { type:'Service', icon:'sparkle', id:'services', title:'Packaging & Merchandising', desc:'Dielines 3D · Mockup 3D · Gamme produit', keywords:'packaging merchandising dieline mockup 3d merch' },
+    // --- Pôles d'Impression Luanda (TREKO / imprimerie.html) ---
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Bâches & Bannières Grand Format — Luanda Express', desc:'Bâche frontlit 510g, mesh microperforé, kakemonos, rollups, affichage urbain 4x3 · Résistance UV', keywords:'bâches baches bannières grand format frontlit mesh kakemono rollup affichage 4x3 imprimerie luanda treko' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Vinyles & Lettrage Adhésif — Vitrines & Covering', desc:'Vinyle polymère, monomère, microperforé vitrines, covering véhicules partiel et total, stickers découpés', keywords:'vinyle vinyles lettrage adhesif adhésif vitrine covering stickers autocollants vehicule magasin' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Textile & Sérigraphie — T-shirts, Polos & Casquettes', desc:'T-shirts personnalisés 180g, polos brodés, casquettes avec broderie 3D, tabliers, uniformes d\'entreprise', keywords:'textile serigraphie sérigraphie broderie tshirts t-shirts polos casquettes uniformes tabliers vetements' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Goodies & Objets Publicitaires — Mugs, Gourdes, Stylos', desc:'Mugs céramique, gourdes inox isothermes, stylos métalliques gravés au laser, clés USB, parapluies, lanyards', keywords:'goodies objets publicitaires mugs gourdes stylos cles usb parapluies lanyards cadeaux entreprise' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Packaging & Boîtes Personnalisées — E-commerce & Luxe', desc:'Boîtes d\'expédition e-commerce, étiquettes adhésives en rouleaux, packaging cartonné luxe, sacs kraft', keywords:'packaging boites boîtes packaging carton étiquettes rouleaux sacs kraft coffrets luxe e-commerce' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Événementiel & Salons — Stands, Photocalls & Badges', desc:'Stands parapluie pop-up, photocalls événementiels, badges d\'accès PVC sécurisés, bracelets indéchirables, totems', keywords:'evenementiel événementiel salons stands parapluie photocall badges pvc bracelets totems foires conferences' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Enseignes & Signalétique — LED & Lettres Boîtiers 3D', desc:'Enseignes lumineuses LED haute visibilité, lettres boîtiers 3D, plaques professionnelles plexiglas & laiton', keywords:'enseignes signaletique signalétique led lettres 3d plexiglas laiton plaques facade boutique magasin' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Tampons & Cachets d\'Entreprise — Trodat & Colop Express', desc:'Tampons encreurs automatiques Trodat / Colop, cachets d\'entreprise ronds officiels, dateurs, timbres à sec', keywords:'tampons cachets trodat colop tampons encreurs cachet rond timbre a sec dateur administratif officiel' },
+    { type:'Imprimerie', icon:'printer', id:'imprimerie-link', url:'imprimerie.html#catalogue', title:'Papeterie & Carterie d\'Affaires — Cartes Luxe Dorure 24k', desc:'Cartes de visite dorure or à chaud 24k et tranche dorée, papier à en-tête, chemises à rabat, flyers, brochures', keywords:'papeterie carterie cartes de visite dorure or 24k papier entête chemises rabat flyers depliants brochures' },
 
-    // --- Actions ---
-    { type:'Action', icon:'arrow',   id:'contact', title:'Démarrer un projet',   desc:'Ouvrir le formulaire de brief',       keywords:'devis brief projet démarrer contact formulaire' },
-    { type:'Action', icon:'whatsapp',id:'contact', title:'Discuter sur WhatsApp', desc:'Réponse sous 2h en moyenne',          keywords:'whatsapp chat direct discuter message' },
-    { type:'Action', icon:'mail',    id:'contact', title:'Email direct',          desc:'studio@spotlight.design',             keywords:'email mail contact direct studio' }
+    // --- Services Studio ---
+    { type:'Service', icon:'sparkle', id:'services', title:'Direction Artistique & Identité Visuelle', desc:'Logos sur-mesure · Chartes graphiques 60p+ · Systèmes typographiques complets', keywords:'direction artistique branding identite identité charte logo typographie univers de marque' },
+    { type:'Service', icon:'sparkle', id:'services', title:'Impression Haute Définition & Finitions de Luxe', desc:'Résolution 300 DPI · CMJN · Teintes Pantone · Foil 24k · Emboss · Laser Luanda', keywords:'impression print 300dpi cmjn pantone foil dorure or emboss gaufrage laser vernis luanda' },
+    { type:'Service', icon:'sparkle', id:'services', title:'UI/UX & Expériences Web Responsive', desc:'Design System · Prototypes Figma · Front-end ultra-moderne · Responsive 100%', keywords:'ui ux design web figma prototype front-end react responsive mobile mobile-first performance' },
+    { type:'Service', icon:'sparkle', id:'services', title:'Packaging 3D & Merchandising de Marque', desc:'Dielines vectorielles · Rendu 3D photoréaliste · Prototypage packaging · Gamme produit', keywords:'packaging 3d merchandising dieline mockup rendu produit packaging e-commerce boites' },
+
+    // --- Actions Rapides & Réseaux ---
+    { type:'Action', icon:'dollar',   id:'contact',            title:'Simuler un budget en Dollars ($ USD) / Euros (€ EUR)', desc:'Accéder au calculateur de budget dans le formulaire', keywords:'budget devis dollars usd euros eur prix estimation tarif contact' },
+    { type:'Action', icon:'arrow',    id:'contact',            title:'Démarrer un brief de projet',   desc:'Ouvrir le formulaire de brief et recevoir un devis sous 24h', keywords:'devis brief projet démarrer contact formulaire estimation' },
+    { type:'Action', icon:'whatsapp', id:'contact',            title:'Discuter sur WhatsApp',          desc:'Assistance rapide et réponse sous 2h en moyenne', keywords:'whatsapp chat direct discuter message assistance contact' },
+    { type:'Action', icon:'mail',     id:'contact',            title:'Envoyer un email direct',        desc:'studio@spotlight.design', keywords:'email mail contact direct studio message brief' },
+    { type:'Action', icon:'share',    url:'https://facebook.com', title:'Spotlight sur Facebook',      desc:'Suivez nos actualités et réalisations sur Facebook', keywords:'facebook reseaux sociaux page spotlight' },
+    { type:'Action', icon:'share',    url:'https://tiktok.com',   title:'Spotlight sur TikTok',        desc:'Découvrez nos coulisses créatives en vidéo sur TikTok', keywords:'tiktok video coulisses creation studio spotlight' },
+    { type:'Action', icon:'share',    url:'https://youtube.com',  title:'Spotlight sur YouTube',       desc:'Showreels et documentaires de projets sur YouTube', keywords:'youtube video showreel chaine spotlight' },
+    { type:'Action', icon:'font',     id:'typoReaderWidget',   title:'Agrandir la taille des textes',  desc:'Molette interactive pour augmenter les petits caractères sur mobile', keywords:'taille texte caracteres police zoom molette plus grand son doux' }
   ];
 
   const ICONS = {
@@ -3175,16 +3212,25 @@ tailwind.config = {
     mail:     '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/>',
     image:    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="1.8"/><path d="m3 17 5-5 4 4 3-3 6 6"/>',
     arrow:    '<path d="M5 12h14M13 6l6 6-6 6"/>',
-    whatsapp: '<path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>'
+    whatsapp: '<path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>',
+    printer:  '<path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/>',
+    globe:    '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    dollar:   '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+    font:     '<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>',
+    fileText: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+    share:    '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+    eye:      '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>'
   };
 
   const TYPE_LABELS = {
-    Section: 'Sections',
-    Projet:  'Projets',
-    Service: 'Services & Catégories',
-    Action:  'Actions rapides'
+    Projet:     'Sites Clients & Réalisations',
+    Imprimerie: 'Pôles d\'Impression Luanda (TREKO)',
+    Service:    'Services Studio',
+    Section:    'Sections du Site',
+    Action:     'Actions Rapides & Réseaux',
+    Page:       'Texte & Contenu Trouvé sur la Page'
   };
-  const TYPE_ORDER = ['Section', 'Projet', 'Service', 'Action'];
+  const TYPE_ORDER = ['Projet', 'Imprimerie', 'Service', 'Section', 'Action', 'Page'];
 
   const searchEl    = document.getElementById('search');
   const searchInput = document.getElementById('searchInput');
@@ -3226,32 +3272,97 @@ tailwind.config = {
     const kw    = (item.keywords || '').toLowerCase();
     let score = 0;
 
-    if (title === q) score = 100;
-    else if (title.startsWith(q)) score = 80;
-    else if (title.includes(q)) score = 60;
-    else if (desc.includes(q)) score = 30;
-    else if (kw.includes(q)) score = 20;
+    if (title === q) score = 120;
+    else if (title.startsWith(q)) score = 90;
+    else if (title.includes(q)) score = 70;
+    else if (desc.includes(q)) score = 40;
+    else if (kw.includes(q)) score = 30;
 
     const words = q.split(/\s+/).filter(w => w.length >= 2);
     words.forEach(w => {
-      if (title.includes(w)) score += 8;
-      if (desc.includes(w))  score += 3;
-      if (kw.includes(w))    score += 2;
+      if (title.includes(w)) score += 12;
+      if (desc.includes(w))  score += 6;
+      if (kw.includes(w))    score += 4;
     });
 
     return score;
   }
 
+  /* Crawler en temps réel du DOM visible pour tout trouver sur le site */
+  function crawlDom(query, maxResults = 8) {
+    if (!query || query.length < 2) return [];
+    const q = query.trim().toLowerCase();
+    const words = q.split(/\s+/).filter(w => w.length >= 2);
+    if (!words.length) return [];
+
+    const candidates = document.querySelectorAll(
+      'main h1, main h2, main h3, main h4, main p, main li, main dt, main dd, main blockquote, section[id] h2, section[id] h3, section[id] p'
+    );
+    const results = [];
+    const seenTexts = new Set();
+
+    for (let i = 0; i < candidates.length; i++) {
+      const el = candidates[i];
+      if (el.closest('#search') || el.closest('#megaMenu') || el.closest('script') || el.closest('style')) continue;
+      if (el.offsetParent === null) continue;
+
+      const rawText = (el.innerText || el.textContent || '').trim().replace(/\s+/g, ' ');
+      if (rawText.length < 6) continue;
+      const lower = rawText.toLowerCase();
+
+      const matchedAll = words.every(w => lower.includes(w));
+      const matchedAny = words.some(w => lower.includes(w));
+      if (!matchedAny) continue;
+
+      const firstIdx = lower.indexOf(words[0]);
+      const start = Math.max(0, firstIdx - 28);
+      const end = Math.min(rawText.length, firstIdx + 92);
+      let snippet = (start > 0 ? '…' : '') + rawText.substring(start, end).trim() + (end < rawText.length ? '…' : '');
+
+      const dedupKey = snippet.toLowerCase().substring(0, 36);
+      if (seenTexts.has(dedupKey)) continue;
+      seenTexts.add(dedupKey);
+
+      const section = el.closest('section[id]');
+      const sectionId = section ? section.id : 'hero';
+      const heading = el.tagName.startsWith('H') 
+        ? el.textContent.trim() 
+        : (section ? (section.querySelector('h2, h3')?.textContent.trim() || 'Section ' + sectionId) : 'Spotlight Studio');
+
+      let score = matchedAll ? 48 : 22;
+      if (lower.startsWith(q)) score += 20;
+
+      results.push({
+        type: 'Page',
+        icon: 'fileText',
+        id: sectionId,
+        domElement: el,
+        title: (heading.length > 55 ? heading.substring(0, 52) + '…' : heading),
+        desc: snippet,
+        keywords: rawText.substring(0, 100),
+        score: score
+      });
+
+      if (results.length >= maxResults) break;
+    }
+    return results;
+  }
+
   function filterIndex(query) {
     const q = query.trim().toLowerCase();
     if (!q) {
-      return SEARCH_INDEX.filter(i => i.type === 'Section');
+      return SEARCH_INDEX.filter(i => i.type === 'Section' || i.type === 'Projet').slice(0, 10);
     }
-    return SEARCH_INDEX
+    const staticMatches = SEARCH_INDEX
       .map(item => ({ item, score: scoreItem(item, q) }))
-      .filter(r => r.score > 0)
+      .filter(r => r.score > 0);
+
+    const domMatches = crawlDom(q, 7)
+      .map(item => ({ item, score: item.score }));
+
+    return [...staticMatches, ...domMatches]
       .sort((a, b) => b.score - a.score)
-      .slice(0, 14)
+      .slice(0, 18)
       .map(r => r.item);
   }
 
@@ -3266,8 +3377,8 @@ tailwind.config = {
           '<svg class="search-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' +
             '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>' +
           '</svg>' +
-          '<p class="search-empty-title">Aucun résultat</p>' +
-          '<p class="search-empty-desc">Essayez « Casalinka », « Treko », « Wise », « Imprimerie » ou « Luanda ».</p>' +
+          '<p class="search-empty-title">Aucun résultat trouvé</p>' +
+          '<p class="search-empty-desc">Essayez un mot clé : « Casalinka », « Bâches », « Devis », « Luanda », « Pambala », « Textile »…</p>' +
         '</div>';
       return;
     }
@@ -3283,13 +3394,13 @@ tailwind.config = {
 
     TYPE_ORDER.forEach(type => {
       if (!groups[type] || !groups[type].length) return;
-      html += '<div class="search-group-label">' + TYPE_LABELS[type] + '</div>';
+      html += '<div class="search-group-label">' + (TYPE_LABELS[type] || type) + '</div>';
       groups[type].forEach(item => {
         const idx = flatIdx++;
         const t = highlight(item.title, query);
         const d = highlight(item.desc, query);
         html +=
-          '<button type="button" class="search-item" role="option" data-idx="' + idx + '" data-target="' + item.id + '" aria-selected="false">' +
+          '<button type="button" class="search-item" role="option" data-idx="' + idx + '" data-target="' + (item.id || '') + '" aria-selected="false">' +
             '<span class="search-item-icon">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' +
                 (ICONS[item.icon] || ICONS.arrow) +
@@ -3327,7 +3438,7 @@ tailwind.config = {
   }
 
   function openSearch() {
-    closeMegaMenu(); // Si le méga-menu est ouvert, on le ferme proprement
+    closeMegaMenu();
     lastFocusedBeforeSearch = document.activeElement;
     renderResults('');
     searchEl.classList.add('open');
@@ -3352,10 +3463,13 @@ tailwind.config = {
     const item = searchResults[idx];
     if (!item) return;
     closeSearch();
+
+    // 1. Si c'est une étude de cas avec modal
     if (item.caseKey) {
       setTimeout(() => openModal(item.caseKey), 120);
       return;
     }
+    // 2. Si c'est une URL externe ou page dédiée (imprimerie.html, etc.)
     if (item.url) {
       if (item.url.startsWith('http')) {
         window.open(item.url, '_blank', 'noopener,noreferrer');
@@ -3364,9 +3478,27 @@ tailwind.config = {
       }
       return;
     }
+    // 3. Si c'est un élément DOM direct découvert par le crawler
+    if (item.domElement) {
+      setTimeout(() => {
+        item.domElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        item.domElement.classList.remove('search-highlight-flash');
+        void item.domElement.offsetWidth;
+        item.domElement.classList.add('search-highlight-flash');
+        setTimeout(() => item.domElement.classList.remove('search-highlight-flash'), 3000);
+      }, 100);
+      return;
+    }
+    // 4. Si c'est un ID de section
     const target = document.getElementById(item.id);
     if (target) {
-      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.classList.remove('search-highlight-flash');
+        void target.offsetWidth;
+        target.classList.add('search-highlight-flash');
+        setTimeout(() => target.classList.remove('search-highlight-flash'), 3000);
+      }, 80);
     } else {
       location.hash = '#' + item.id;
     }
@@ -4229,22 +4361,76 @@ tailwind.config = {
 
 
   /* ============================================================
-     SYSTÈME DE PARTICULES AIMANTÉES CLIGNOTANTES (CANVAS)
-     Scintillement subtil, gravitation magnétique et constellations
+     REGARD INTERACTIF STUDIO — YEUX DYNAMIQUES LUXE (CANVAS 2D)
+     - Suivi du regard stéréoscopique selon pointeur souris et tactile mobile
+     - Émotions dynamiques : Attentif, Curieux, Souriant, Clin d'œil, Surpris, Veille zen
+     - Iris or 24k scintillant, pupilles réactives, reflets vitreux saphir
   ============================================================ */
-  (function initMagneticParticles() {
-    const canvas = document.getElementById('magneticParticlesCanvas');
-    const container = document.getElementById('particleOrbContainer');
+  (function initSpotlightEyes() {
+    const canvas = document.getElementById('spotlightEyesCanvas');
+    const container = document.getElementById('eyesOrbContainer');
+    const trigger = document.getElementById('eyesClickableTrigger') || container;
+    const statusText = document.getElementById('eyeStatusText');
+    const statusDot = document.getElementById('eyeStatusDot');
+    const ambientHalo = document.getElementById('eyesAmbientHalo');
     if (!canvas || !container) return;
 
     const ctx = canvas.getContext('2d');
     let width = 0, height = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let particles = [];
-    let isMouseOver = false;
-    let mouse = { x: 0, y: 0 };
     let animId = null;
     let isVisible = true;
+
+    // Position du pointeur / doigt (coordonnées d'écran globales)
+    const pointer = {
+      x: window.innerWidth * 0.5,
+      y: window.innerHeight * 0.35,
+      isActive: false,
+      isTouch: false,
+      lastMoveTime: Date.now()
+    };
+
+    // Gaze physique normalisé [-1, 1] avec lerp doux
+    const gaze = {
+      targetX: 0,
+      targetY: 0,
+      currentX: 0,
+      currentY: 0,
+      saccadeX: 0,
+      saccadeY: 0
+    };
+
+    // États émotionnels : 'attentive' | 'curious' | 'happy' | 'wink' | 'surprised' | 'sleepy'
+    let mood = 'attentive';
+    let prevMood = '';
+    let surprisedTimer = null;
+
+    // Morphing des paupières et pupilles
+    const animState = {
+      opennessLeft: 1.0,
+      opennessRight: 1.0,
+      targetOpenLeft: 1.0,
+      targetOpenRight: 1.0,
+      smileCurve: 0.0,
+      targetSmile: 0.0,
+      pupilScale: 0.44,
+      targetPupil: 0.44,
+      browTilt: 0.0,
+      targetBrowTilt: 0.0,
+      irisShine: 0.8
+    };
+
+    // Clin d'œil spontané régulier
+    let nextWinkTime = Date.now() + 8000;
+    let isWinking = false;
+
+    // Onde de choc dorée au clic
+    const shockwave = {
+      active: false,
+      radius: 0,
+      maxRadius: 80,
+      alpha: 0
+    };
 
     function resize() {
       const rect = canvas.getBoundingClientRect();
@@ -4256,145 +4442,313 @@ tailwind.config = {
       ctx.scale(dpr, dpr);
     }
 
-    // Palette luxueuse Spotlight
-    const colors = [
-      { r: 255, g: 208, b: 38 },   // Or signature #FFD026
-      { r: 255, g: 228, b: 120 },  // Or étincelant
-      { r: 244, g: 242, b: 237 },  // Ivoire Bone #F4F2ED
-      { r: 255, g: 185, b: 50 },   // Ambre chaud
-    ];
+    // Gestionnaire des humeurs et badges
+    function setMood(newMood) {
+      if (mood === 'surprised' && newMood !== 'surprised') return;
+      if (mood === newMood) return;
+      prevMood = mood;
+      mood = newMood;
 
-    class Particle {
-      constructor() {
-        this.reset(true);
+      if (statusText) {
+        let label = 'Regard attentif';
+        if (mood === 'curious')   label = 'Curieux & Focus ✨';
+        else if (mood === 'happy') label = 'Complice & Souriant 😊';
+        else if (mood === 'wink')  label = 'Clin d\'œil Studio 👁️';
+        else if (mood === 'surprised') label = 'Surpris & Éveillé ⚡';
+        else if (mood === 'sleepy')    label = 'En veille zen 🌙';
+        statusText.textContent = label;
       }
 
-      reset(initial = false) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = initial ? Math.random() * (width * 0.44) : (width * 0.44);
-        this.x = width / 2 + Math.cos(angle) * radius;
-        this.y = height / 2 + Math.sin(angle) * radius;
-        
-        // Vitesse orbitale douce
-        this.vx = (Math.random() - 0.5) * 0.35;
-        this.vy = (Math.random() - 0.5) * 0.35;
-        this.radius = 0.8 + Math.random() * 1.7;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        
-        // Clignotement / Scintillement organique
-        this.baseAlpha = 0.3 + Math.random() * 0.55;
-        this.twinkleSpeed = 0.02 + Math.random() * 0.04;
-        this.twinklePhase = Math.random() * Math.PI * 2;
-        this.alpha = this.baseAlpha;
-
-        this.mass = 0.75 + Math.random() * 0.6;
-        this.friction = 0.94;
+      if (ambientHalo) {
+        ambientHalo.className = 'absolute inset-4 rounded-full pointer-events-none transition-all duration-500 ' +
+          (mood === 'surprised' ? 'bg-gold/[0.28] blur-3xl scale-110' :
+           mood === 'happy' ? 'bg-gold/[0.18] blur-2xl' :
+           mood === 'curious' ? 'bg-gold/[0.15] blur-2xl scale-105' :
+           mood === 'sleepy' ? 'bg-gold/[0.04] blur-xl scale-95' :
+           'bg-gold/[0.1] blur-2xl');
       }
 
-      update(time) {
-        const cx = width / 2;
-        const cy = height / 2;
-        const maxR = width * 0.47;
+      if (statusDot) {
+        statusDot.className = 'h-1.5 w-1.5 rounded-full transition-colors duration-300 ' +
+          (mood === 'sleepy' ? 'bg-bone/40' :
+           mood === 'surprised' ? 'bg-[#FFF080] animate-ping' :
+           'bg-gold animate-pulse');
+      }
 
-        // Scintillement doux
-        const twinkle = Math.sin(time * this.twinkleSpeed + this.twinklePhase);
-        this.alpha = Math.max(0.12, Math.min(1, this.baseAlpha * (0.45 + 0.55 * twinkle)));
+      // Configuration des cibles morphologiques selon l'humeur
+      switch (mood) {
+        case 'curious':
+          animState.targetOpenLeft = 1.15;
+          animState.targetOpenRight = 1.15;
+          animState.targetSmile = 0.15;
+          animState.targetPupil = 0.56;
+          animState.targetBrowTilt = -0.05;
+          break;
+        case 'happy':
+          animState.targetOpenLeft = 0.88;
+          animState.targetOpenRight = 0.88;
+          animState.targetSmile = 0.75;
+          animState.targetPupil = 0.46;
+          animState.targetBrowTilt = 0.08;
+          break;
+        case 'surprised':
+          animState.targetOpenLeft = 1.35;
+          animState.targetOpenRight = 1.35;
+          animState.targetSmile = -0.15;
+          animState.targetPupil = 0.32;
+          animState.targetBrowTilt = -0.12;
+          break;
+        case 'sleepy':
+          animState.targetOpenLeft = 0.32;
+          animState.targetOpenRight = 0.32;
+          animState.targetSmile = 0.0;
+          animState.targetPupil = 0.38;
+          animState.targetBrowTilt = 0.0;
+          break;
+        case 'wink':
+          animState.targetOpenLeft = 0.95;
+          animState.targetOpenRight = 0.02;
+          animState.targetSmile = 0.65;
+          animState.targetPupil = 0.48;
+          break;
+        case 'attentive':
+        default:
+          animState.targetOpenLeft = 1.0;
+          animState.targetOpenRight = 1.0;
+          animState.targetSmile = 0.0;
+          animState.targetPupil = 0.44;
+          animState.targetBrowTilt = 0.0;
+          break;
+      }
+    }
 
-        // Interaction Aimantée
-        if (isMouseOver) {
-          const dx = mouse.x - this.x;
-          const dy = mouse.y - this.y;
-          const dist = Math.hypot(dx, dy);
-          const magnetRadius = width * 0.75;
+    // Gestion du tracking pointeur (souris + tactile)
+    function onPointerMove(e) {
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
+      pointer.isActive = true;
+      pointer.lastMoveTime = Date.now();
+      checkHoverContext(e.clientX, e.clientY);
+    }
 
-          if (dist < magnetRadius && dist > 1) {
-            const force = (1 - dist / magnetRadius) * 0.16 * this.mass;
-            this.vx += (dx / dist) * force;
-            this.vy += (dy / dist) * force;
-            // Tourbillon magnétique orbital subtil
-            this.vx += (-dy / dist) * force * 0.35;
-            this.vy += (dx / dist) * force * 0.35;
-          }
+    function onTouch(e) {
+      if (!e.touches || !e.touches.length) return;
+      const t = e.touches[0];
+      pointer.x = t.clientX;
+      pointer.y = t.clientY;
+      pointer.isActive = true;
+      pointer.isTouch = true;
+      pointer.lastMoveTime = Date.now();
+      checkHoverContext(t.clientX, t.clientY);
+    }
+
+    function checkHoverContext(cx, cy) {
+      if (mood === 'surprised') return;
+
+      const rect = trigger.getBoundingClientRect();
+      const podCenterX = rect.left + rect.width / 2;
+      const podCenterY = rect.top + rect.height / 2;
+      const distToPod = Math.hypot(cx - podCenterX, cy - podCenterY);
+
+      if (distToPod < 170) {
+        setMood('curious');
+        return;
+      }
+
+      try {
+        const el = document.elementFromPoint(cx, cy);
+        if (el && el.closest('a, button, [role="button"], input, select, textarea, .magnetic, .group, [data-interactive]')) {
+          setMood('happy');
+          return;
         }
+      } catch(e) {}
 
-        // Confinement doux dans l'orbe circulaire
-        const fromCenterX = this.x - cx;
-        const fromCenterY = this.y - cy;
-        const distFromCenter = Math.hypot(fromCenterX, fromCenterY);
+      setMood('attentive');
+    }
 
-        if (distFromCenter > maxR) {
-          const normalX = fromCenterX / distFromCenter;
-          const normalY = fromCenterY / distFromCenter;
-          this.vx -= normalX * 0.22;
-          this.vy -= normalY * 0.22;
-        } else {
-          const pull = 0.0025;
-          this.vx -= (fromCenterX / maxR) * pull;
-          this.vy -= (fromCenterY / maxR) * pull;
-        }
+    // Événements globaux souris et mobile
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('touchstart', onTouch, { passive: true });
+    window.addEventListener('touchmove', onTouch, { passive: true });
+    window.addEventListener('touchend', () => {
+      pointer.lastMoveTime = Date.now();
+    }, { passive: true });
 
-        this.vx *= this.friction;
-        this.vy *= this.friction;
-        this.x += this.vx;
-        this.y += this.vy;
+    // Interaction au clic / toucher direct sur la capsule des yeux : SURPRISE & ONDE DE CHOC
+    trigger.addEventListener('pointerdown', (e) => {
+      e.stopPropagation();
+      shockwave.active = true;
+      shockwave.radius = 6;
+      shockwave.maxRadius = width * 0.95;
+      shockwave.alpha = 1.0;
+
+      clearTimeout(surprisedTimer);
+      setMood('surprised');
+
+      surprisedTimer = setTimeout(() => {
+        mood = 'attentive';
+        checkHoverContext(pointer.x, pointer.y);
+      }, 1600);
+    });
+
+    let lastTap = 0;
+    trigger.addEventListener('click', () => {
+      const now = Date.now();
+      if (now - lastTap < 380) {
+        triggerWink();
       }
+      lastTap = now;
+    });
 
-      draw() {
-        ctx.save();
+    function triggerWink() {
+      if (mood === 'surprised' || isWinking) return;
+      isWinking = true;
+      setMood('wink');
+      setTimeout(() => {
+        isWinking = false;
+        setMood('attentive');
+      }, 420);
+    }
+
+    // Dessin d'un œil unique (gauche ou droit)
+    function drawSingleEye(cx, cy, rx, ry, isLeft, time) {
+      const openness = isLeft ? animState.opennessLeft : animState.opennessRight;
+      const smile = animState.smileCurve;
+      const brow = animState.browTilt * (isLeft ? -1 : 1);
+
+      ctx.save();
+      ctx.beginPath();
+
+      const cornerLeftX  = cx - rx;
+      const cornerLeftY  = cy;
+      const cornerRightX = cx + rx;
+      const cornerRightY = cy;
+
+      const topHeight = ry * Math.max(0.04, openness) * 1.35;
+      const cp1x = cx - rx * 0.45;
+      const cp1y = cy - topHeight + brow * 12;
+      const cp2x = cx + rx * 0.45;
+      const cp2y = cy - topHeight - brow * 12;
+
+      const bottomHeight = ry * Math.max(0.04, openness) * 1.15;
+      const smileOffset = smile * (ry * 0.72);
+      const cp3x = cx + rx * 0.45;
+      const cp3y = cy + bottomHeight - smileOffset;
+      const cp4x = cx - rx * 0.45;
+      const cp4y = cy + bottomHeight - smileOffset;
+
+      ctx.moveTo(cornerLeftX, cornerLeftY);
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, cornerRightX, cornerRightY);
+      ctx.bezierCurveTo(cp3x, cp3y, cp4x, cp4y, cornerLeftX, cornerLeftY);
+      ctx.closePath();
+
+      ctx.fillStyle = '#0E1118';
+      ctx.fill();
+
+      // Clip pour l'intérieur de l'œil
+      ctx.clip();
+
+      // Sclérotique en obsidienne luxueuse
+      const scleraGrad = ctx.createRadialGradient(cx, cy, rx * 0.1, cx, cy, rx * 1.1);
+      scleraGrad.addColorStop(0, '#1B1F2A');
+      scleraGrad.addColorStop(0.65, '#10131B');
+      scleraGrad.addColorStop(1, '#080A0E');
+      ctx.fillStyle = scleraGrad;
+      ctx.fillRect(cx - rx - 10, cy - ry - 10, (rx + 10) * 2, (ry + 10) * 2);
+
+      // Ombre interne sous la paupière supérieure
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      ctx.fillRect(cx - rx, cy - ry, rx * 2, ry * 0.75);
+
+      // Calcul de la position de l'iris (regard stéréoscopique)
+      const maxTravelX = rx * 0.44;
+      const maxTravelY = ry * 0.40;
+      const convergence = isLeft ? 1.5 : -1.5;
+      const irisX = cx + (gaze.currentX + gaze.saccadeX) * maxTravelX + convergence;
+      const irisY = cy + (gaze.currentY + gaze.saccadeY) * maxTravelY;
+      const rIris = rx * 0.65;
+
+      // Iris Or 24K Signature Spotlight
+      const irisGrad = ctx.createRadialGradient(irisX, irisY, rIris * 0.15, irisX, irisY, rIris);
+      irisGrad.addColorStop(0,   '#FFFEE8');
+      irisGrad.addColorStop(0.2, '#FFE466');
+      irisGrad.addColorStop(0.55, '#FFD026');
+      irisGrad.addColorStop(0.8, '#D89808');
+      irisGrad.addColorStop(0.95, '#875600');
+      irisGrad.addColorStop(1,   '#241703');
+
+      ctx.beginPath();
+      ctx.arc(irisX, irisY, rIris, 0, Math.PI * 2);
+      ctx.fillStyle = irisGrad;
+      ctx.fill();
+
+      // Fibres radiées de l'iris
+      ctx.save();
+      ctx.translate(irisX, irisY);
+      const rayCount = 14;
+      for (let r = 0; r < rayCount; r++) {
+        const ang = (r / rayCount) * Math.PI * 2 + Math.sin(time * 0.015 + r) * 0.05;
+        const len = rIris * (0.65 + 0.3 * Math.sin(r * 2.5 + time * 0.02));
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${this.alpha})`;
-        
-        if (this.alpha > 0.65) {
-          ctx.shadowColor = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, 0.7)`;
-          ctx.shadowBlur = this.radius * 3;
-        }
-        
-        ctx.fill();
-        ctx.restore();
+        ctx.moveTo(Math.cos(ang) * (rIris * 0.3), Math.sin(ang) * (rIris * 0.3));
+        ctx.lineTo(Math.cos(ang) * len, Math.sin(ang) * len);
+        ctx.strokeStyle = 'rgba(255, 245, 180, 0.28)';
+        ctx.lineWidth = 0.9;
+        ctx.stroke();
       }
+      ctx.restore();
+
+      // Pupille Noir Onyx réactive
+      const rPupil = rIris * animState.pupilScale;
+      ctx.beginPath();
+      ctx.arc(irisX, irisY, rPupil, 0, Math.PI * 2);
+      ctx.fillStyle = '#060709';
+      ctx.fill();
+
+      ctx.strokeStyle = 'rgba(255,208,38,0.2)';
+      ctx.lineWidth = 0.75;
+      ctx.stroke();
+
+      // Reflets spéculaires saphir
+      const glint1X = irisX + rIris * 0.28;
+      const glint1Y = irisY - rIris * 0.28;
+      ctx.beginPath();
+      ctx.ellipse(glint1X, glint1Y, rIris * 0.24, rIris * 0.16, Math.PI / 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.shadowColor = 'rgba(255,255,255,0.85)';
+      ctx.shadowBlur = 4;
+      ctx.fill();
+
+      const glint2X = irisX - rIris * 0.32;
+      const glint2Y = irisY + rIris * 0.26;
+      ctx.beginPath();
+      ctx.arc(glint2X, glint2Y, rIris * 0.11, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 230, 120, 0.85)';
+      ctx.shadowBlur = 0;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(irisX + rPupil * 0.25, irisY + rPupil * 0.25, 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fill();
+
+      ctx.restore(); // Fin clip
+
+      // Ligne d'eyeliner dorée & paupière supérieure
+      ctx.beginPath();
+      ctx.moveTo(cornerLeftX, cornerLeftY);
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, cornerRightX, cornerRightY);
+      ctx.strokeStyle = 'rgba(255, 208, 38, ' + (0.45 * Math.min(1, openness + 0.2)) + ')';
+      ctx.lineWidth = 2.0;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(cornerRightX, cornerRightY);
+      ctx.bezierCurveTo(cp3x, cp3y, cp4x, cp4y, cornerLeftX, cornerLeftY);
+      ctx.strokeStyle = 'rgba(255, 208, 38, ' + (0.22 * Math.min(1, openness + 0.1)) + ')';
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
     }
-
-    function initParticles() {
-      particles = [];
-      const count = width < 160 ? 46 : 64;
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function updateCoords(clientX, clientY) {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = clientX - rect.left;
-      mouse.y = clientY - rect.top;
-    }
-
-    container.addEventListener('pointerenter', (e) => {
-      isMouseOver = true;
-      updateCoords(e.clientX, e.clientY);
-    });
-
-    container.addEventListener('pointermove', (e) => {
-      isMouseOver = true;
-      updateCoords(e.clientX, e.clientY);
-    });
-
-    container.addEventListener('pointerleave', () => {
-      isMouseOver = false;
-    });
-
-    // Impulsion magnétique au clic / touch
-    container.addEventListener('pointerdown', (e) => {
-      updateCoords(e.clientX, e.clientY);
-      particles.forEach(p => {
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const dist = Math.hypot(dx, dy) || 1;
-        const pulse = Math.min(3.5, 28 / dist);
-        p.vx += (dx / dist) * pulse;
-        p.vy += (dy / dist) * pulse;
-      });
-    });
 
     let time = 0;
     function loop() {
@@ -4406,30 +4760,100 @@ tailwind.config = {
       time += 1;
       ctx.clearRect(0, 0, width, height);
 
-      // Filaments magnétiques légers (constellations)
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.hypot(dx, dy);
-          const maxConnect = 30;
+      // Calcul du vecteur regard
+      const rect = trigger.getBoundingClientRect();
+      const podCenterX = rect.left + rect.width / 2;
+      const podCenterY = rect.top + rect.height / 2;
 
-          if (dist < maxConnect) {
-            const lineAlpha = (1 - dist / maxConnect) * 0.2 * particles[i].alpha * particles[j].alpha;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(255, 208, 38, ${lineAlpha})`;
-            ctx.lineWidth = 0.55;
-            ctx.stroke();
-          }
-        }
+      const dx = pointer.x - podCenterX;
+      const dy = pointer.y - podCenterY;
+      const screenRadius = Math.max(window.innerWidth, window.innerHeight) * 0.6;
+
+      const dist = Math.hypot(dx, dy) || 1;
+      const strength = Math.min(1.0, Math.atan(dist / (screenRadius * 0.35)) / (Math.PI / 2));
+      gaze.targetX = (dx / dist) * strength;
+      gaze.targetY = (dy / dist) * strength;
+
+      // Inactivité > 6.5s -> Veille zen
+      const idleTime = Date.now() - pointer.lastMoveTime;
+      if (idleTime > 6500 && mood !== 'sleepy' && mood !== 'surprised') {
+        setMood('sleepy');
       }
 
-      particles.forEach(p => {
-        p.update(time);
-        p.draw();
-      });
+      // Réveil immédiat au toucher ou mouvement
+      if (idleTime < 500 && mood === 'sleepy') {
+        setMood('attentive');
+      }
+
+      // Clin d'œil spontané régulier
+      if (mood === 'attentive' && Date.now() > nextWinkTime) {
+        nextWinkTime = Date.now() + 9000 + Math.random() * 5000;
+        triggerWink();
+      }
+
+      // Micro-saccades
+      if (time % 110 === 0 && mood !== 'sleepy') {
+        gaze.saccadeX = (Math.random() - 0.5) * 0.06;
+        gaze.saccadeY = (Math.random() - 0.5) * 0.05;
+      } else if (time % 110 === 30) {
+        gaze.saccadeX = 0;
+        gaze.saccadeY = 0;
+      }
+
+      // Respiration en mode veille
+      if (mood === 'sleepy') {
+        const breath = Math.sin(time * 0.035) * 0.05;
+        animState.targetOpenLeft = 0.32 + breath;
+        animState.targetOpenRight = 0.32 + breath;
+        gaze.targetX = 0;
+        gaze.targetY = 0.25;
+      }
+
+      // Lerp physique
+      const lerpSpeed = (mood === 'surprised' || isWinking) ? 0.28 : 0.13;
+      gaze.currentX += (gaze.targetX - gaze.currentX) * lerpSpeed;
+      gaze.currentY += (gaze.targetY - gaze.currentY) * lerpSpeed;
+
+      animState.opennessLeft += (animState.targetOpenLeft - animState.opennessLeft) * lerpSpeed;
+      animState.opennessRight += (animState.targetOpenRight - animState.opennessRight) * lerpSpeed;
+      animState.smileCurve += (animState.targetSmile - animState.smileCurve) * lerpSpeed;
+      animState.pupilScale += (animState.targetPupil - animState.pupilScale) * lerpSpeed;
+      animState.browTilt += (animState.targetBrowTilt - animState.browTilt) * lerpSpeed;
+
+      // Rendu des deux yeux
+      const eyeSpacing = width * 0.36;
+      const eyeY = height * 0.5;
+      const leftEyeX = width * 0.5 - eyeSpacing * 0.5;
+      const rightEyeX = width * 0.5 + eyeSpacing * 0.5;
+      const eyeRx = width * 0.165;
+      const eyeRy = height * 0.18;
+
+      drawSingleEye(leftEyeX, eyeY, eyeRx, eyeRy, true, time);
+      drawSingleEye(rightEyeX, eyeY, eyeRx, eyeRy, false, time);
+
+      // Onde de choc dorée
+      if (shockwave.active) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(width * 0.5, height * 0.5, shockwave.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 208, 38, ${shockwave.alpha})`;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(width * 0.5, height * 0.5, shockwave.radius * 0.75, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 240, 140, ${shockwave.alpha * 0.5})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+        ctx.restore();
+
+        shockwave.radius += (shockwave.maxRadius - shockwave.radius) * 0.16 + 1.2;
+        shockwave.alpha *= 0.92;
+
+        if (shockwave.alpha < 0.02 || shockwave.radius >= shockwave.maxRadius) {
+          shockwave.active = false;
+        }
+      }
 
       animId = requestAnimationFrame(loop);
     }
@@ -4443,11 +4867,9 @@ tailwind.config = {
 
     window.addEventListener('resize', () => {
       resize();
-      initParticles();
     }, { passive: true });
 
     resize();
-    initParticles();
     loop();
   })();
 
