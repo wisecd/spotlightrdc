@@ -845,14 +845,22 @@ tailwind.config = {
   }
 
   .hero-reveal-mask {
-    clip-path: inset(0 0 105% 0);
-    transform: translateY(24px);
-    transition: clip-path 1.3s cubic-bezier(.16,1,.3,1),
-                transform 1.3s cubic-bezier(.16,1,.3,1);
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 1.1s cubic-bezier(.16,1,.3,1),
+                transform 1.1s cubic-bezier(.16,1,.3,1);
+    will-change: opacity, transform;
   }
   .hero-reveal-mask.in {
-    clip-path: inset(-15% -5% -15% -5%);
+    opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Règle de garantie Chrome & Safari : le hero ne doit jamais être bloqué */
+  #hero .reveal.in,
+  #hero .hero-reveal-mask.in {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   /* ============================================================
@@ -3603,8 +3611,17 @@ tailwind.config = {
 
 
   /* ============================================================
-     SCROLL REVEAL
+     SCROLL REVEAL & HERO AUTO-REVEAL (GARANTIE CHROME & TOUS NAVIGATEURS)
   ============================================================ */
+  (function revealHeroImmediately() {
+    const heroEls = document.querySelectorAll('#hero .reveal, #hero .hero-reveal-mask, #hero .mask-reveal');
+    heroEls.forEach((el, idx) => {
+      setTimeout(() => {
+        el.classList.add('in');
+      }, idx * 40);
+    });
+  })();
+
   (function reveal() {
     const els = document.querySelectorAll('.reveal, .mask-reveal, .hero-reveal-mask');
     if (!('IntersectionObserver' in window) || reduceMotion) {
@@ -3613,14 +3630,16 @@ tailwind.config = {
     }
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+        if (!entry.isIntersecting && entry.intersectionRatio <= 0) return;
         entry.target.classList.add('in');
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.01, rootMargin: '40px 0px 40px 0px' });
 
     els.forEach(el => {
-      if (!el.classList.contains('hero-reveal-mask')) {
+      if (el.closest('#hero')) {
+        el.classList.add('in');
+      } else {
         const parent = el.parentElement;
         if (parent) {
           const group = Array.from(parent.children).filter(
@@ -3629,8 +3648,8 @@ tailwind.config = {
           const idx = group.indexOf(el);
           if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 75 + 'ms';
         }
+        io.observe(el);
       }
-      io.observe(el);
     });
   })();
 
